@@ -1,0 +1,81 @@
+﻿@model WebUI.Appliance
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+<div>
+    <h4>电器详情</h4>
+    <hr />
+    <ul class="list-group">
+        <li class="list-group-item">
+            产品编号：
+            <span class="list-group-item-text" style="float:right;">@Html.DisplayFor(model => model.ProductSN)</span>
+        </li>
+        <li class="list-group-item">
+            产品名称：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.AppName)
+            </span>
+        </li>
+        <li class="list-group-item">
+            产品类型：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.AppType)
+            </span>
+        </li>
+        <li class="list-group-item">
+            规格型号：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.Model)
+            </span>
+        </li>
+        <li class="list-group-item">
+            致冷功率：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.PowerCold)
+            </span>
+        </li>
+        <li class="list-group-item">
+            致热功率：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.PowerHot)
+            </span>
+        </li>
+        <li class="list-group-item">
+           制造厂名：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.Factory)
+            </span>
+        </li>
+        <li class="list-group-item">
+            生产日期：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.ProductDate)
+            </span>
+        </li>
+        <li class="list-group-item">
+            安装日期：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.InstallationDate)
+            </span>
+        </li>
+        <li class="list-group-item">
+            安装日期：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.InstallationDate)
+            </span>
+        </li>
+        <li class="list-group-item">
+            在用状况：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.IsUsing)
+            </span>
+        </li>
+    </ul>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AppId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

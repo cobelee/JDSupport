@@ -1,0 +1,100 @@
+﻿@model IEnumerable<WebUI.Appliance>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductSN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PowerCold)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PowerHot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Factory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstallationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScrapDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsScrapped)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsUsing)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductSN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PowerCold)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PowerHot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Factory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstallationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScrapDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsScrapped)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsUsing)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AppId }) |
+            @Html.ActionLink("Details", "cx", new { id=item.ProductSN }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AppId })
+        </td>
+    </tr>
+}
+
+</table>

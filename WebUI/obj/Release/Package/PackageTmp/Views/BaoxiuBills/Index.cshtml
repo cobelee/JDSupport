@@ -1,0 +1,88 @@
+﻿@model IEnumerable<WebUI.BaoxiuBill>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductSN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BigClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserMobilePhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HandleResult)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAccept)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductSN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BigClass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserMobilePhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HandleResult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAccept)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BxId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BxId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BxId })
+        </td>
+    </tr>
+}
+
+</table>

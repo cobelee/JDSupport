@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JDDBModelStoreContainer" CdmEntityContainer="JiadianDBEntities">
+    <EntitySetMapping Name="ProductSNs">
+      <EntityTypeMapping TypeName="JDDBModel.ProductSN">
+        <MappingFragment StoreEntitySet="ProductSN">
+          <ScalarProperty Name="ActiveStatus" ColumnName="ActiveStatus" />
+          <ScalarProperty Name="Downtime" ColumnName="Downtime" />
+          <ScalarProperty Name="ActiveTime" ColumnName="ActiveTime" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Appliances">
+      <EntityTypeMapping TypeName="JDDBModel.Appliance">
+        <MappingFragment StoreEntitySet="Appliance">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="OwnerDepName" ColumnName="OwnerDepName" />
+          <ScalarProperty Name="Power" ColumnName="Power" />
+          <ScalarProperty Name="AssetSN" ColumnName="AssetSN" />
+          <ScalarProperty Name="FixedSN" ColumnName="FixedSN" />
+          <ScalarProperty Name="BigClass" ColumnName="BigClass" />
+          <ScalarProperty Name="IsUsing" ColumnName="IsUsing" />
+          <ScalarProperty Name="IsScrapped" ColumnName="IsScrapped" />
+          <ScalarProperty Name="ScrapDate" ColumnName="ScrapDate" />
+          <ScalarProperty Name="InstallationDate" ColumnName="InstallationDate" />
+          <ScalarProperty Name="ProductDate" ColumnName="ProductDate" />
+          <ScalarProperty Name="Factory" ColumnName="Factory" />
+          <ScalarProperty Name="PowerHot" ColumnName="PowerHot" />
+          <ScalarProperty Name="PowerCold" ColumnName="PowerCold" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="AppType" ColumnName="AppType" />
+          <ScalarProperty Name="AppName" ColumnName="AppName" />
+          <ScalarProperty Name="ProductSN" ColumnName="ProductSN" />
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="JDDBModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserMobilePhone" ColumnName="UserMobilePhone" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AppUser" TypeName="JDDBModel.AppUser" StoreEntitySet="AppUser">
+      <EndProperty Name="User">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="Appliance">
+        <ScalarProperty Name="AppId" ColumnName="AppId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="BaoxiuBills">
+      <EntityTypeMapping TypeName="JDDBModel.BaoxiuBill">
+        <MappingFragment StoreEntitySet="BaoxiuBill">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsCanceled" ColumnName="IsCanceled" />
+          <ScalarProperty Name="UserMobileShort" ColumnName="UserMobileShort" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="FaultPhenomenon" ColumnName="FaultPhenomenon" />
+          <ScalarProperty Name="IsAccept" ColumnName="IsAccept" />
+          <ScalarProperty Name="HandleResult" ColumnName="HandleResult" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UserMobilePhone" ColumnName="UserMobilePhone" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DepName" ColumnName="DepName" />
+          <ScalarProperty Name="AppType" ColumnName="AppType" />
+          <ScalarProperty Name="BigClass" ColumnName="BigClass" />
+          <ScalarProperty Name="ProductSN" ColumnName="ProductSN" />
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="BxId" ColumnName="BxId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaigongBills">
+      <EntityTypeMapping TypeName="JDDBModel.PaigongBill">
+        <MappingFragment StoreEntitySet="PaigongBill">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+          <ScalarProperty Name="WxgMobileShort" ColumnName="WxgMobileShort" />
+          <ScalarProperty Name="WxgMobilePhone" ColumnName="WxgMobilePhone" />
+          <ScalarProperty Name="WxgRealName" ColumnName="WxgRealName" />
+          <ScalarProperty Name="WxgId" ColumnName="WxgId" />
+          <ScalarProperty Name="HandleResult" ColumnName="HandleResult" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="FaultPhenomenon" ColumnName="FaultPhenomenon" />
+          <ScalarProperty Name="UserMobileShort" ColumnName="UserMobileShort" />
+          <ScalarProperty Name="UserMobilePhone" ColumnName="UserMobilePhone" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DepName" ColumnName="DepName" />
+          <ScalarProperty Name="AppType" ColumnName="AppType" />
+          <ScalarProperty Name="BigClass" ColumnName="BigClass" />
+          <ScalarProperty Name="ProductSN" ColumnName="ProductSN" />
+          <ScalarProperty Name="AppId" ColumnName="AppId" />
+          <ScalarProperty Name="BxId" ColumnName="BxId" />
+          <ScalarProperty Name="PgId" ColumnName="PgId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Repairmen">
+      <EntityTypeMapping TypeName="JDDBModel.Repairman">
+        <MappingFragment StoreEntitySet="Repairman">
+          <ScalarProperty Name="MobileShort" ColumnName="MobileShort" />
+          <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+          <ScalarProperty Name="JobNumber" ColumnName="JobNumber" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="WxgId" ColumnName="WxgId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

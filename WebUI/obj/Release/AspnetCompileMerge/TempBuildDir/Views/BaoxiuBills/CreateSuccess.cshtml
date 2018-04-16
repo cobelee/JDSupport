@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "CreateSuccess";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+
+<div style="margin:100px 0 0 0; text-align:center;">
+    <div class="alert alert-success">
+        报修单创建成功！
+    </div>
+    <br />
+    <br />
+
+    <div class="text-center">
+        @Html.ActionLink("返回设备详情", "cx", "sh", new { id = @ViewBag.ProductSN }, new { @class = "btn btn-primary" })
+    </div>
+    <br />
+    <br />
+    <br />
+</div>

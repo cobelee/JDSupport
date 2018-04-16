@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "报修记录";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+
+<br /><br />
+<ul class="nav nav-tabs">
+    <li> @Html.ActionLink("设备详情", "cx", "sh", new { id = @ViewBag.ProductSN }, new { @class = "" })</li>
+    <li class="active"><a href="#">报修记录</a></li>
+    <li><a href="#">维保记录</a></li>
+</ul>
+<h2>报修记录</h2>
+<div class="panel-group" id="accordion">
+    @{ int index = 0;
+        foreach (WebUI.BaoxiuBill bill in Model)
+        {
+            index++;
+            <div class="panel panel-default">
+                @if (!bill.IsCompleted)
+                {
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#@bill.BxId">
+                            报障日期：@bill.CreateDate &nbsp;&nbsp;(正在处理)
+                        </a>
+                    </div>
+                    <div id="@bill.BxId" class="panel-collapse collapse @if (index == 1){ @Html.Raw("in") } ">
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>报修单</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>@Html.DisplayName("设备安装地址")</td>
+                                        <td>@bill.Address</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayName("联系人姓名")</td>
+                                        <td>@bill.UserName</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayName("手机号码")</td>
+                                        <td>@bill.UserMobilePhone</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayName("故障现象")</td>
+                                        <td>@bill.FaultPhenomenon</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayName("受理状态")</td>
+                                        <td>@bill.IsAccept</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@Html.DisplayName("处理结果")</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">@bill.HandleResult</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <div class="text-center">
+                                @Html.ActionLink("修改报修单信息", "Edit", new { id = bill.BxId }, new { @class = "btn btn-sm btn-primary" })&nbsp;&nbsp;
+                                @Html.ActionLink("删除此报修记录", "Delete", new { id = bill.BxId }, new { @class = "btn btn-sm btn-danger" })
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="panel-heading">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#@bill.BxId">
+                            报障日期：@bill.CreateDate &nbsp;&nbsp;(处理完成)
+                        </a>
+                    </div>
+                    <div id="@bill.BxId" class="panel-collapse collapse @if (index == 1){ @Html.Raw("in") } ">
+                        <div class="panel-body">
+                            <span style="color:slategray;">@bill.FaultPhenomenon</span>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayName("联系人姓名：")
+                                </dt>
+
+                                <dd>
+                                    @bill.UserName
+                                </dd>
+                                <dt>
+                                    @Html.DisplayName("故障现象：")
+                                </dt>
+                                <dd>@bill.FaultPhenomenon</dd>
+                                <dt>
+                                    @Html.DisplayName("处理结果：")
+                                </dt>
+
+                                <dd>
+                                    @bill.HandleResult
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        }
+    }
+
+</div>

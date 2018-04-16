@@ -1,0 +1,107 @@
+﻿@model WebUI.BaoxiuBill
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BaoxiuBill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductSN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductSN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BigClass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BigClass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserMobilePhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserMobilePhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HandleResult)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HandleResult)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsAccept)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsAccept)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Appliance.ProductSN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Appliance.ProductSN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BxId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

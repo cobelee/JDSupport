@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm("Index", "UploadData"))
+{
+    <input id="ButtonUpload" type="submit" value="提交" />
+}

@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JDDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Appliance">
+    <Key>
+      <PropertyRef Name="AppId" />
+    </Key>
+    <Property Name="AppId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductSN" Type="nvarchar" MaxLength="32" />
+    <Property Name="FixedSN" Type="nvarchar" MaxLength="32" />
+    <Property Name="AssetSN" Type="nvarchar" MaxLength="64" />
+    <Property Name="BigClass" Type="nvarchar" MaxLength="32" />
+    <Property Name="AppName" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="AppType" Type="nvarchar" MaxLength="32" />
+    <Property Name="Model" Type="nvarchar" MaxLength="128" />
+    <Property Name="PowerCold" Type="nvarchar" MaxLength="32" />
+    <Property Name="PowerHot" Type="nvarchar" MaxLength="32" />
+    <Property Name="Power" Type="nvarchar" MaxLength="32" />
+    <Property Name="Factory" Type="nvarchar" MaxLength="64" />
+    <Property Name="ProductDate" Type="datetime" />
+    <Property Name="InstallationDate" Type="datetime" />
+    <Property Name="ScrapDate" Type="datetime" />
+    <Property Name="IsScrapped" Type="bit" Nullable="false" />
+    <Property Name="IsUsing" Type="bit" Nullable="false" />
+    <Property Name="OwnerDepName" Type="nvarchar" MaxLength="32" />
+    <Property Name="Address" Type="nvarchar" MaxLength="128" />
+    <Property Name="Remark" Type="text" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“JiadianDB.dbo.AppUser”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="AppUser">
+    <Key>
+      <PropertyRef Name="AppId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="AppId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BaoxiuBill">
+    <Key>
+      <PropertyRef Name="BxId" />
+    </Key>
+    <Property Name="BxId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AppId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProductSN" Type="nvarchar" MaxLength="32" />
+    <Property Name="BigClass" Type="nvarchar" MaxLength="32" />
+    <Property Name="AppType" Type="nvarchar" MaxLength="32" />
+    <Property Name="DepName" Type="nvarchar" MaxLength="32" />
+    <Property Name="Address" Type="nvarchar" MaxLength="128" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="32" />
+    <Property Name="UserMobilePhone" Type="nvarchar" MaxLength="32" />
+    <Property Name="FaultPhenomenon" Type="nvarchar" MaxLength="1024" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="HandleResult" Type="nvarchar" MaxLength="1024" />
+    <Property Name="IsAccept" Type="bit" Nullable="false" />
+    <Property Name="IsCompleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductSN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SN" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ActiveTime" Type="datetime" />
+    <Property Name="Downtime" Type="datetime" />
+    <Property Name="ActiveStatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="32" />
+    <Property Name="UserMobilePhone" Type="nvarchar" MaxLength="32" />
+  </EntityType>
+  <Association Name="FK_AppUser_Appliance">
+    <End Role="Appliance" Type="Self.Appliance" Multiplicity="1" />
+    <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appliance">
+        <PropertyRef Name="AppId" />
+      </Principal>
+      <Dependent Role="AppUser">
+        <PropertyRef Name="AppId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AppUser_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AppUser" Type="Self.AppUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="AppUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BaoxiuBill_Appliance">
+    <End Role="Appliance" Type="Self.Appliance" Multiplicity="1" />
+    <End Role="BaoxiuBill" Type="Self.BaoxiuBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appliance">
+        <PropertyRef Name="AppId" />
+      </Principal>
+      <Dependent Role="BaoxiuBill">
+        <PropertyRef Name="AppId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JDDBModelStoreContainer">
+    <EntitySet Name="Appliance" EntityType="Self.Appliance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaoxiuBill" EntityType="Self.BaoxiuBill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductSN" EntityType="Self.ProductSN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppUser" EntityType="Self.AppUser" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AppUser].[AppId] AS [AppId], 
+    [AppUser].[UserId] AS [UserId]
+    FROM [dbo].[AppUser] AS [AppUser]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_AppUser_Appliance" Association="Self.FK_AppUser_Appliance">
+      <End Role="Appliance" EntitySet="Appliance" />
+      <End Role="AppUser" EntitySet="AppUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AppUser_User" Association="Self.FK_AppUser_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="AppUser" EntitySet="AppUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BaoxiuBill_Appliance" Association="Self.FK_BaoxiuBill_Appliance">
+      <End Role="Appliance" EntitySet="Appliance" />
+      <End Role="BaoxiuBill" EntitySet="BaoxiuBill" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

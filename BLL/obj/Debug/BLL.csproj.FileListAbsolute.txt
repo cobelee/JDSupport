@@ -1,0 +1,7 @@
+D:\GithubRepoBank\JDSupport\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+D:\GithubRepoBank\JDSupport\BLL\bin\Debug\Tiyi.JD.BLL.dll
+D:\GithubRepoBank\JDSupport\BLL\bin\Debug\Tiyi.JD.BLL.pdb
+D:\GithubRepoBank\JDSupport\BLL\bin\Debug\Tiyi.JD.SQLServerDAL.dll
+D:\GithubRepoBank\JDSupport\BLL\bin\Debug\Tiyi.JD.SQLServerDAL.pdb
+D:\GithubRepoBank\JDSupport\BLL\obj\Debug\Tiyi.JD.BLL.dll
+D:\GithubRepoBank\JDSupport\BLL\obj\Debug\Tiyi.JD.BLL.pdb

@@ -1,0 +1,121 @@
+﻿@model WebUI.Appliance
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Appliance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductSN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductSN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PowerCold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PowerCold)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PowerHot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PowerHot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Factory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Factory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstallationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstallationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScrapDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScrapDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsScrapped)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsScrapped)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsUsing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsUsing)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

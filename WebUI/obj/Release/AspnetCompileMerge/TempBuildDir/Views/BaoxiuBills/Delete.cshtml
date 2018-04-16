@@ -1,0 +1,79 @@
+﻿@model WebUI.BaoxiuBill
+
+@{
+    ViewBag.Title = "删除报修记录";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+
+<h2>删除报修记录</h2>
+
+<h3>确定要删除此报修记录吗?</h3>
+<div>
+    <hr />
+    <table class="table table-striped">
+        <caption>报修单</caption>
+        <thead>
+            <tr>
+                <th>项目</th>
+                <th>内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayName("设备管理号")</td>
+                <td>@Html.DisplayFor(model => model.ProductSN)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayName("设备大类")</td>
+                <td>@Html.DisplayFor(model => model.BigClass)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayName("设备小类")</td>
+                <td>@Html.DisplayFor(model => model.AppType)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayName("所属公司名称")</td>
+                <td>@Html.DisplayFor(model => model.DepName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayName("设备安装地址")</td>
+                <td>@Html.DisplayFor(model => model.Address)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayName("联系人姓名")</td>
+                <td>@Html.DisplayFor(model => model.UserName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayName("手机号码")</td>
+                <td>@Html.DisplayFor(model => model.UserMobilePhone)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayName("故障现象")</td>
+                <td>@Html.DisplayFor(model => model.FaultPhenomenon)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayName("创建时间")</td>
+                <td>@Html.DisplayFor(model => model.CreateDate)</td>
+            </tr>
+            
+            <tr>
+                <td>@Html.DisplayName("受理状态")</td>
+                <td>@Html.DisplayFor(model => model.IsAccept)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayName("处理结果")</td>
+                <td>@Html.DisplayFor(model => model.HandleResult)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="删除" class="btn btn-primary" />
+            @Html.ActionLink("返回", "BillList", new { id = @Model.ProductSN }, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="JiadianDB" EntityNamespace="Tiyi.JD.SQLServerDAL" ContextNamespace="Tiyi.JD.SQLServerDAL" Class="JiadianDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Appliance" Member="Appliance">
+    <Type Name="Appliance">
+      <Column Name="AppId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProductSN" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="FixedSN" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="AssetSN" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="BigClass" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="AppName" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="AppType" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Model" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="PowerCold" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="PowerHot" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Power" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Factory" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="ProductDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="InstallationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ScrapDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsScrapped" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsUsing" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="OwnerDepName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="FK_AppUser_Appliance" Member="AppUser" ThisKey="AppId" OtherKey="AppId" Type="AppUser" DeleteRule="NO ACTION" />
+      <Association Name="FK_BaoxiuBill_Appliance" Member="BaoxiuBill" ThisKey="AppId" OtherKey="AppId" Type="BaoxiuBill" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AppUser" Member="AppUser">
+    <Type Name="AppUser">
+      <Column Name="AppId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="FK_AppUser_Appliance" Member="Appliance" ThisKey="AppId" OtherKey="AppId" Type="Appliance" IsForeignKey="true" />
+      <Association Name="FK_AppUser_User" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BaoxiuBill" Member="BaoxiuBill">
+    <Type Name="BaoxiuBill">
+      <Column Name="BxId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AppId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ProductSN" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="BigClass" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="AppType" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="DepName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="UserMobilePhone" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="UserMobileShort" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="FaultPhenomenon" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HandleResult" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="IsAccept" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsCanceled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsCompleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Association Name="FK_BaoxiuBill_Appliance" Member="Appliance" ThisKey="AppId" OtherKey="AppId" Type="Appliance" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PaigongBill" Member="PaigongBill">
+    <Type Name="PaigongBill">
+      <Column Name="PgId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BxId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AppId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ProductSN" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="BigClass" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="AppType" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="DepName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="UserMobilePhone" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="UserMobileShort" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="FaultPhenomenon" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HandleResult" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+      <Column Name="WxgId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="WxgRealName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="WxgMobilePhone" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="WxgMobileShort" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsClosed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ProductSN" Member="ProductSN">
+    <Type Name="ProductSN">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ActiveTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Downtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ActiveStatus" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Repairman" Member="Repairman">
+    <Type Name="Repairman">
+      <Column Name="WxgId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RealName" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="JobNumber" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="MobilePhone" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="MobileShort" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.User" Member="User">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="UserMobilePhone" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Association Name="FK_AppUser_User" Member="AppUser" ThisKey="UserId" OtherKey="UserId" Type="AppUser" DeleteRule="NO ACTION" />
+    </Type>
+  </Table>
+  <Table Name="dbo.WeibaoLog" Member="WeibaoLog">
+    <Type Name="WeibaoLog">
+      <Column Name="WbId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AppId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FixedSN" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="AssetSN" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="ProductSN" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="BigClass" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="AppType" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="OwerDepName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="WbContent" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
+      <Column Name="WbDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="WbJobNumber" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="WbRealName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

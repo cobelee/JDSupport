@@ -1,0 +1,5 @@
+D:\GithubRepoBank\JDSupport\SQLServerDAL\bin\Release\Tiyi.JD.SQLServerDAL.dll
+D:\GithubRepoBank\JDSupport\SQLServerDAL\bin\Release\Tiyi.JD.SQLServerDAL.pdb
+D:\GithubRepoBank\JDSupport\SQLServerDAL\obj\Release\Tiyi.JD.SQLServerDAL.dll
+D:\GithubRepoBank\JDSupport\SQLServerDAL\obj\Release\Tiyi.JD.SQLServerDAL.pdb
+D:\GithubRepoBank\JDSupport\SQLServerDAL\obj\Release\SQLServerDAL.csprojResolveAssemblyReference.cache

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c04313d5bd264a5a8e2d41ba0af58473" Name="Diagram1" >
+        <EntityTypeShape EntityType="JDDBModel.ProductSN" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="JDDBModel.Appliance" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="JDDBModel.User" Width="1.5" PointX="5.625" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="JDDBModel.AppUser" />
+        <EntityTypeShape EntityType="JDDBModel.BaoxiuBill" Width="1.75" PointX="5.625" PointY="3.625" />
+        <AssociationConnector Association="JDDBModel.FK_BaoxiuBill_Appliance" />
+        <EntityTypeShape EntityType="JDDBModel.PaigongBill" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="JDDBModel.Repairman" Width="1.5" PointX="2.75" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

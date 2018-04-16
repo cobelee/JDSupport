@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm("Update", "UploadData"))
+{
+    <input id="ButtonUpload" type="submit" value="提交" />
+}

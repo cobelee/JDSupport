@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JDDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="JiadianDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ProductSNs" EntityType="JDDBModel.ProductSN" />
+    <EntitySet Name="Appliances" EntityType="JDDBModel.Appliance" />
+    <EntitySet Name="Users" EntityType="JDDBModel.User" />
+    <AssociationSet Name="AppUser" Association="JDDBModel.AppUser">
+      <End Role="Appliance" EntitySet="Appliances" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="BaoxiuBills" EntityType="JDDBModel.BaoxiuBill" />
+    <AssociationSet Name="FK_BaoxiuBill_Appliance" Association="JDDBModel.FK_BaoxiuBill_Appliance">
+      <End Role="Appliance" EntitySet="Appliances" />
+      <End Role="BaoxiuBill" EntitySet="BaoxiuBills" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ProductSN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="SN" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ActiveTime" Type="DateTime" Precision="3" />
+    <Property Name="Downtime" Type="DateTime" Precision="3" />
+    <Property Name="ActiveStatus" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Appliance">
+    <Key>
+      <PropertyRef Name="AppId" />
+    </Key>
+    <Property Name="AppId" Type="Guid" Nullable="false" />
+    <Property Name="ProductSN" Type="String" MaxLength="32" FixedLength="false" Unicode="true">
+      <Documentation>
+        <LongDescription>设备管理号</LongDescription>
+      </Documentation>
+    </Property>
+    <Property Name="AppName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="AppType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PowerCold" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="PowerHot" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Factory" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="ProductDate" Type="DateTime" Precision="3" />
+    <Property Name="InstallationDate" Type="DateTime" Precision="3" />
+    <Property Name="ScrapDate" Type="DateTime" Precision="3" />
+    <Property Name="IsScrapped" Type="Boolean" Nullable="false" />
+    <Property Name="IsUsing" Type="Boolean" Nullable="false" />
+    <Property Name="BigClass" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="FixedSN" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="AssetSN" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Power" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="OwnerDepName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="JDDBModel.AppUser" FromRole="Appliance" ToRole="User" />
+    <NavigationProperty Name="BaoxiuBills" Relationship="JDDBModel.FK_BaoxiuBill_Appliance" FromRole="Appliance" ToRole="BaoxiuBill" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="UserMobilePhone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Appliances" Relationship="JDDBModel.AppUser" FromRole="User" ToRole="Appliance" />
+  </EntityType>
+  <Association Name="AppUser">
+    <End Type="JDDBModel.Appliance" Role="Appliance" Multiplicity="*" />
+    <End Type="JDDBModel.User" Role="User" Multiplicity="*" />
+  </Association>
+  <EntityType Name="BaoxiuBill">
+    <Key>
+      <PropertyRef Name="BxId" />
+    </Key>
+    <Property Name="BxId" Type="Guid" Nullable="false" />
+    <Property Name="AppId" Type="Guid" Nullable="false" />
+    <Property Name="ProductSN" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="BigClass" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="AppType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="DepName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="UserMobilePhone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="FaultPhenomenon" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HandleResult" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="IsAccept" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Appliance" Relationship="JDDBModel.FK_BaoxiuBill_Appliance" FromRole="BaoxiuBill" ToRole="Appliance" />
+    <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_BaoxiuBill_Appliance">
+    <End Type="JDDBModel.Appliance" Role="Appliance" Multiplicity="1" />
+    <End Type="JDDBModel.BaoxiuBill" Role="BaoxiuBill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Appliance">
+        <PropertyRef Name="AppId" />
+      </Principal>
+      <Dependent Role="BaoxiuBill">
+        <PropertyRef Name="AppId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
