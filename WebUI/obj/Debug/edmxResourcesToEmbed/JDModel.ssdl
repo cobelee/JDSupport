@@ -51,11 +51,35 @@
     <Property Name="UserMobileShort" Type="nvarchar" MaxLength="32" />
     <Property Name="FaultPhenomenon" Type="nvarchar" MaxLength="1024" />
     <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="BillStatus" Type="nvarchar" MaxLength="64" />
     <Property Name="HandleResult" Type="nvarchar" MaxLength="1024" />
     <Property Name="IsAccept" Type="bit" Nullable="false" />
     <Property Name="IsCanceled" Type="bit" Nullable="false" />
     <Property Name="IsCompleted" Type="bit" Nullable="false" />
     <Property Name="Remark" Type="nvarchar" MaxLength="1024" />
+  </EntityType>
+  <EntityType Name="Corporation">
+    <Key>
+      <PropertyRef Name="CorpId" />
+    </Key>
+    <Property Name="CorpId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CorpName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="OrderIndex" Type="bit" />
+    <Property Name="LinkmanName" Type="nvarchar" MaxLength="32" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="32" />
+    <Property Name="MobilePhone" Type="nvarchar" MaxLength="32" />
+    <Property Name="MobileShort" Type="nvarchar" MaxLength="16" />
+    <Property Name="Email" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="Fault">
+    <Key>
+      <PropertyRef Name="FaultId" />
+    </Key>
+    <Property Name="FaultId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FaultText" Type="nvarchar" MaxLength="64" />
+    <Property Name="BigClass" Type="nvarchar" MaxLength="32" />
+    <Property Name="CreateDate" Type="datetime" />
   </EntityType>
   <EntityType Name="PaigongBill">
     <Key>
@@ -74,6 +98,8 @@
     <Property Name="UserMobileShort" Type="nvarchar" MaxLength="16" />
     <Property Name="FaultPhenomenon" Type="nvarchar" MaxLength="1024" />
     <Property Name="CreateDate" Type="datetime" />
+    <Property Name="IsAccept" Type="bit" Nullable="false" />
+    <Property Name="AcceptDate" Type="datetime" />
     <Property Name="HandleResult" Type="nvarchar" MaxLength="1024" />
     <Property Name="WxgId" Type="uniqueidentifier" />
     <Property Name="WxgRealName" Type="nvarchar" MaxLength="32" />
@@ -110,6 +136,26 @@
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="32" />
     <Property Name="UserMobilePhone" Type="nvarchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="WeibaoLog">
+    <Key>
+      <PropertyRef Name="WbId" />
+    </Key>
+    <Property Name="WbId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AppId" Type="uniqueidentifier" />
+    <Property Name="FixedSN" Type="nvarchar" MaxLength="32" />
+    <Property Name="AssetSN" Type="nvarchar" MaxLength="64" />
+    <Property Name="ProductSN" Type="nvarchar" MaxLength="32" />
+    <Property Name="BigClass" Type="nvarchar" MaxLength="32" />
+    <Property Name="AppType" Type="nvarchar" MaxLength="32" />
+    <Property Name="OwerDepName" Type="nvarchar" MaxLength="32" />
+    <Property Name="Address" Type="nvarchar" MaxLength="128" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="WbContent" Type="nvarchar" MaxLength="128" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="512" />
+    <Property Name="WbDate" Type="datetime" />
+    <Property Name="WbJobNumber" Type="nvarchar" MaxLength="32" />
+    <Property Name="WbRealName" Type="nvarchar" MaxLength="32" />
   </EntityType>
   <Association Name="FK_AppUser_Appliance">
     <End Role="Appliance" Type="Self.Appliance" Multiplicity="1" />
@@ -150,10 +196,13 @@
   <EntityContainer Name="JDDBModelStoreContainer">
     <EntitySet Name="Appliance" EntityType="Self.Appliance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BaoxiuBill" EntityType="Self.BaoxiuBill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Corporation" EntityType="Self.Corporation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fault" EntityType="Self.Fault" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PaigongBill" EntityType="Self.PaigongBill" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductSN" EntityType="Self.ProductSN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Repairman" EntityType="Self.Repairman" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WeibaoLog" EntityType="Self.WeibaoLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AppUser" EntityType="Self.AppUser" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [AppUser].[AppId] AS [AppId], 

@@ -49,7 +49,6 @@ D:\GithubRepoBank\JDSupport\WebUI\bin\System.Web.WebPages.xml
 D:\GithubRepoBank\JDSupport\WebUI\bin\System.Web.WebPages.Deployment.xml
 D:\GithubRepoBank\JDSupport\WebUI\bin\System.Web.WebPages.Razor.xml
 D:\GithubRepoBank\JDSupport\WebUI\bin\Antlr3.Runtime.pdb
-D:\GithubRepoBank\JDSupport\WebUI\bin\Newtonsoft.Json.xml
 D:\GithubRepoBank\JDSupport\WebUI\bin\EntityFramework.xml
 D:\GithubRepoBank\JDSupport\WebUI\bin\EntityFramework.SqlServer.xml
 D:\GithubRepoBank\JDSupport\WebUI\bin\Microsoft.AspNet.Identity.Core.xml
@@ -86,3 +85,10 @@ D:\GithubRepoBank\JDSupport\WebUI\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftA
 D:\GithubRepoBank\JDSupport\WebUI\obj\Release\WebUI.dll
 D:\GithubRepoBank\JDSupport\WebUI\obj\Release\WebUI.pdb
 D:\GithubRepoBank\JDSupport\WebUI\obj\Release\WebUI.csprojResolveAssemblyReference.cache
+D:\GithubRepoBank\JDSupport\WebUI\bin\WebUI.XmlSerializers.dll
+D:\GithubRepoBank\JDSupport\WebUI\bin\Senparc.Weixin.dll
+D:\GithubRepoBank\JDSupport\WebUI\bin\Senparc.Weixin.Work.dll
+D:\GithubRepoBank\JDSupport\WebUI\bin\Senparc.Weixin.pdb
+D:\GithubRepoBank\JDSupport\WebUI\bin\Senparc.Weixin.Work.pdb
+D:\GithubRepoBank\JDSupport\WebUI\bin\Senparc.Weixin.Work.xml
+D:\GithubRepoBank\JDSupport\WebUI\obj\Release\WebUI.XmlSerializers.dll

@@ -56,6 +56,18 @@ public partial class DataList : System.Web.UI.Page
         rptApp.DataBind();
     }
 
+    private void Research()
+    {
+        string queryStr = tbQueryStr.Text;
+        if (string.IsNullOrEmpty(queryStr))
+        {
+            hfSearchMode.Value = "ByDep";
+            Search(hfSearchMode.Value, ddlDepName.SelectedValue);
+        }
+        else
+            Search(hfSearchMode.Value, tbQueryStr.Text);
+    }
+
     protected void btnQuery_Click(object sender, EventArgs e)
     {
         hfSearchMode.Value = ddlCode.SelectedValue;
@@ -65,6 +77,22 @@ public partial class DataList : System.Web.UI.Page
     protected void btnQueryByDep_Click(object sender, EventArgs e)
     {
         hfSearchMode.Value = "ByDep";
+        tbQueryStr.Text = "";
         Search(hfSearchMode.Value, ddlDepName.SelectedValue);
+    }
+
+    protected void rptApp_ItemCommand(object source, RepeaterCommandEventArgs e)
+    {
+        if (e.CommandName == "DeleteData")
+        {
+            Guid appId = Guid.Empty;
+            Guid.TryParse(e.CommandArgument.ToString(), out appId);
+
+            if (appId == Guid.Empty)
+                return;
+
+            bllApp.DeleteAppliance(appId);
+            Research();
+        }
     }
 }

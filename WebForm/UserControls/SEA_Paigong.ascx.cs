@@ -109,6 +109,9 @@ public partial class UserControls_SEA_Paigong : System.Web.UI.UserControl
             Tiyi.JD.SQLServerDAL.BaoxiuBill bxBill = bll_baoxiu.GetBaoxiuBill(bxId);
             if (bxBill == null)
                 return;
+            bxBill.IsAccept = true;
+            bxBill.BillStatus = "已派工";
+            bll_baoxiu.SubmitChanges();
 
             Tiyi.JD.SQLServerDAL.PaigongBill pgBill = new Tiyi.JD.SQLServerDAL.PaigongBill();
 
@@ -227,18 +230,31 @@ public partial class UserControls_SEA_Paigong : System.Web.UI.UserControl
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.AppendLine("设备类型：" + pgBill.BigClass + pgBill.AppType);
             sb.AppendLine("详细地址：" + pgBill.Address);
-            sb.AppendLine("联系方式：" + pgBill.UserName + " " + pgBill.UserMobilePhone + " (短号：" + pgBill.UserMobileShort + ")");
-            sb.AppendLine("派工时间：" + DateTime.Now.ToString() + "\n");
-            sb.AppendLine("故障现象：" + pgBill.FaultPhenomenon);
+            sb.AppendLine("用户信息：" + pgBill.UserName + " " + pgBill.UserMobilePhone + " (" + pgBill.UserMobileShort + ")");
+            sb.AppendLine("故障现象：" + pgBill.FaultPhenomenon + "\n");
+            sb.AppendLine("派工时间：" + DateTime.Now.ToString());
             sb.AppendLine("备注信息：" + pgBill.Remark);
+            sb.AppendLine("\n接到派工单后，请尽快完成接单操作。");
             article.Description = sb.ToString();
-            article.Url = "";
+            article.Url = "http://www.tiyi.biz/JDWebForm/WxWork/PaigongBillHandle.aspx?pgid=" + PgId.ToString();
             System.Web.Script.Serialization.JavaScriptSerializer js = new System.Web.Script.Serialization.JavaScriptSerializer();
             string articleJson = js.Serialize(article);
-            ws_wxSender.SendArticleToUser("101527", articleJson, "34");
 
-            Literal ltlSendWxResult = formView.FindControl("ltlSendWxResult") as Literal;
-            ltlSendWxResult.Text = "微信提醒发送成功";
+            HiddenField hfWxgId = formView.FindControl("hfWxgId") as HiddenField;
+            Guid wxgId = Guid.Empty;
+            Guid.TryParse(hfWxgId.Value, out wxgId);
+            Tiyi.JD.SQLServerDAL.Repairman wxg = bll_wxg.GetRepairmanById(wxgId);
+            if (wxg == null)
+                return;
+
+            try
+            {
+                ws_wxSender.SendArticleToUser(wxg.JobNumber, articleJson, "34");
+
+                Literal ltlSendWxResult = formView.FindControl("ltlSendWxResult") as Literal;
+                ltlSendWxResult.Text = "微信提醒发送成功";
+            }
+            catch (Exception ee) { }
         }
     }
 

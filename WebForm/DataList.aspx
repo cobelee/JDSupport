@@ -1,4 +1,4 @@
-﻿<%@ Page Title="数据批量导入" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="DataList.aspx.cs" Inherits="DataList" %>
+﻿<%@ Page Title="查询在用设备" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="DataList.aspx.cs" Inherits="DataList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -52,7 +52,7 @@
                         </div>
 
                     </div>
-                    <asp:Repeater ID="rptApp" runat="server">
+                    <asp:Repeater ID="rptApp" runat="server" OnItemCommand="rptApp_ItemCommand">
 
                         <HeaderTemplate>
                             <table class="table table-striped table-bordered bootstrap-datatable datatable">
@@ -86,13 +86,30 @@
                                 <td><a class="btn btn-success" href='<%# "DataDetail.aspx?id=" + Eval("AppId").ToString() %>'>
                                     <i class="fa fa-list"></i>
                                 </a>
-                                    <a class="btn btn-info" href="table.html#">
+<%--                                    <a class="btn btn-info" href="table.html#">
                                         <i class="fa fa-edit "></i>
                                     </a>
-                                    <a class="btn btn-danger" href="table.html#">
-                                        <i class="fa fa-trash-o "></i>
+                                    <a class="btn btn-danger" href="table.html#" OnClick='return confirm("确定要接单吗？")'>
+                                        <i class="fa fa-trash-o " ></i>
+                                    </a>--%>
+                                    <div class="btn-group">
+                                        <asp:HyperLink ID="btnAccept" runat="server" CssClass="btn btn-primary btn-sm" Text="设备详情" NavigateUrl='<%# "DataDetail.aspx?id=" + Eval("AppId") %>'></asp:HyperLink>
+                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# "BxdList_OneApp.aspx?id=" + Eval("AppId") %>'>查询报修历史</asp:HyperLink></li>
+                                            <li>
+                                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "WbLogList_OneApp.aspx?id=" + Eval("AppId") %>'>查询维保记录</asp:HyperLink></li>
+                                            <li>
+                                                <asp:LinkButton ID="lbtnDelete" runat="server" OnClientClick='return confirm("删除后数据不可恢复\n\n你确定要删除该设备吗？")' CommandName="DeleteData" CommandArgument='<%# Eval("AppId") %>'>删除设备记录</asp:LinkButton>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                    </a></td>
+                                </td>
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
@@ -111,6 +128,6 @@
 
 
     <!-- inline scripts related to this page -->
-    <script src="assets/js/pages/form-elements.js"></script>
+    <script src="~/assets/js/pages/form-elements.js"></script>
 </asp:Content>
 

@@ -2,3 +2,4 @@ D:\GithubRepoBank\JDSupport\SQLServerDAL\bin\Debug\Tiyi.JD.SQLServerDAL.dll
 D:\GithubRepoBank\JDSupport\SQLServerDAL\bin\Debug\Tiyi.JD.SQLServerDAL.pdb
 D:\GithubRepoBank\JDSupport\SQLServerDAL\obj\Debug\Tiyi.JD.SQLServerDAL.dll
 D:\GithubRepoBank\JDSupport\SQLServerDAL\obj\Debug\Tiyi.JD.SQLServerDAL.pdb
+D:\GithubRepoBank\JDSupport\SQLServerDAL\obj\Debug\SQLServerDAL.csprojResolveAssemblyReference.cache

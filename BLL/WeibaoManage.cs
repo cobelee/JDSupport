@@ -63,6 +63,17 @@ namespace Tiyi.JD.BLL
         }
 
 
+        /// <summary>
+        /// 获取指定appId的最近一次维保记录
+        /// </summary>
+        /// <param name="appId">设备ID</param>
+        /// <returns></returns>
+        public WeibaoLog GetLastWeibaoLog(Guid appId)
+        {
+            return da.GetLastWeibaoLog(appId);
+        }
+
+
 
 
         /// <summary>

@@ -1,0 +1,81 @@
+﻿@model WebUI.Appliance
+
+@{
+    ViewBag.Title = "电器详情";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+<div>
+    <br /><br />
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="">设备详情</a></li>
+        <li>@Html.ActionLink("报修记录", "BillList", "BaoxiuBills", new { id = @Model.ProductSN }, new { @class = "" })</li>
+        <li>@Html.ActionLink("维保记录", "WbLogList", "WeibaoLog", new { id = @Model.ProductSN }, new { @class = "" })</li>
+    </ul>
+    <br /><br />
+    <ul class="list-group">
+        <li class="list-group-item">
+            产品编号：
+            <span class="list-group-item-text" style="float:right;">@Html.DisplayFor(model => model.ProductSN)</span>
+        </li>
+        <li class="list-group-item">
+            产品类型：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.BigClass)  @Html.DisplayFor(model => model.AppType)
+            </span>
+        </li>
+        <li class="list-group-item">
+            规格型号：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.Model)
+            </span>
+        </li>
+        <li class="list-group-item">
+            致冷功率：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.PowerCold)
+            </span>
+        </li>
+        <li class="list-group-item">
+            致热功率：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.PowerHot)
+            </span>
+        </li>
+        <li class="list-group-item">
+            制造厂名：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.Factory)
+            </span>
+        </li>
+        <li class="list-group-item">
+            生产日期：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.ProductDate)
+            </span>
+        </li>
+        <li class="list-group-item">
+            安装日期：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.InstallationDate)
+            </span>
+        </li>
+        <li class="list-group-item">
+            安装地址：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.OwnerDepName) + @Html.DisplayFor(model => model.Address)
+
+            </span>
+        </li>
+        <li class="list-group-item">
+            在用状况：
+            <span class="list-group-item-text" style="float:right;">
+                @Html.DisplayFor(model => model.IsUsing)
+            </span>
+        </li>
+    </ul>
+    <div class="btn-toolbar" role="toolbar" style="padding:10px 0;">
+        <div class="btn-group">
+            @Html.ActionLink("我要报修", "Create", "BaoxiuBills", new { id = Model.ProductSN }, new { @class = "btn btn-sm btn-primary" })
+        </div>
+    </div>
+</div>

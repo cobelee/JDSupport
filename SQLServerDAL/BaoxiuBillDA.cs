@@ -38,6 +38,18 @@ namespace Tiyi.JD.SQLServerDAL
                 dbContext.SubmitChanges();
         }
 
+
+        /// <summary>
+        /// 获取指定状态的报修单数量
+        /// </summary>
+        /// <param name="isAccept">客服是否受理</param>
+        /// <param name="isCompleted">报修单是否处理完毕</param>
+        /// <returns></returns>
+        public int GetCount(bool isAccept, bool isCompleted)
+        {
+            return dbContext.BaoxiuBill.Where(a => a.IsAccept == isAccept && a.IsCompleted == isCompleted).Count();
+        }
+
         /// <summary>
         /// 创建新的报修单。
         /// </summary>
@@ -77,18 +89,18 @@ namespace Tiyi.JD.SQLServerDAL
         }
 
         /// <summary>
-        /// 获取我的最近10条报修单。
+        /// 获取指定设备的所有报修单。
         /// </summary>
-        /// <param name="investorID">我的工号</param>
-        /// <returns></returns>
-        //public IQueryable<BaoxiuBill> GetMyBaoxiuBillTop10(string investorID)
-        //{
-        //    var query = from item in dbContext.BaoxiuBill
-        //                where item.InvestorID == investorID
-        //                orderby item.InvestDate descending
-        //                select item;
-        //    return query.AsQueryable<BaoxiuBill>().Take(10);
-        //}
+        /// <param name = "appId" > 设备Id </ param >
+        /// < returns ></ returns >
+        public IQueryable<BaoxiuBill> GetBaoxiuBill_ForOneApp(Guid appId)
+        {
+            var query = from item in dbContext.BaoxiuBill
+                        where item.AppId == appId
+                        orderby item.CreateDate descending
+                        select item;
+            return query.AsQueryable<BaoxiuBill>();
+        }
 
         /// <summary>
         /// 获取所有未完成报修单列表。

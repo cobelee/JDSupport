@@ -18,7 +18,7 @@
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box red-bg">
                 <i class="fa fa-thumbs-o-up"></i>
-                <div class="count">8</div>
+                <div class="count">(8)</div>
                 <div class="title">客户公司</div>
             </div>
             <!--/.info-box-->
@@ -28,7 +28,9 @@
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box green-bg">
                 <i class="fa fa-cubes"></i>
-                <div class="count">5500</div>
+                <div class="count">
+                    <asp:Literal ID="ltlCount_ForDevice" runat="server"></asp:Literal>
+                </div>
                 <div class="title">设备总数</div>
             </div>
             <!--/.info-box-->
@@ -38,7 +40,9 @@
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="info-box blue-bg">
                 <i class="fa fa-cloud-download"></i>
-                <div class="count">12</div>
+                <div class="count">
+                    <asp:Literal ID="ltlCount_ForWxg" runat="server"></asp:Literal>
+                </div>
                 <div class="title">维修工</div>
             </div>
             <!--/.info-box-->
@@ -69,12 +73,14 @@
                     <i class="fa">报修单</i>
                     <ul>
                         <li>
-                            <strong>256k</strong>
-                            <span>friends</span>
+                            <strong>
+                                <asp:Literal ID="ltlCount_Bxd_IsNotAccept" runat="server"></asp:Literal></strong>
+                            <span>未处理</span>
                         </li>
                         <li>
-                            <strong>359</strong>
-                            <span>feeds</span>
+                            <strong>
+                                <asp:Literal ID="ltlCount_Bxd_IsAccept" runat="server"></asp:Literal></strong>
+                            <span>处理中</span>
                         </li>
                     </ul>
                 </div>
@@ -89,12 +95,14 @@
                     <i class="fa">派工单</i>
                     <ul>
                         <li>
-                            <strong>1562k</strong>
-                            <span>followers</span>
+                            <strong>
+                                <asp:Literal ID="ltlCount_Pgd_IsNotAccept" runat="server"></asp:Literal></strong>
+                            <span>未接单</span>
                         </li>
                         <li>
-                            <strong>2562</strong>
-                            <span>tweets</span>
+                            <strong>
+                                <asp:Literal ID="ltlCount_Pgd_IsAccept" runat="server"></asp:Literal></strong>
+                            <span>在修理</span>
                         </li>
                     </ul>
                 </div>
@@ -106,14 +114,14 @@
             <div class="col-lg-6 col-md-3">
 
                 <div class="social-box linkedin">
-                    <i class="fa fa-linkedin"></i>
+                    <i class="fa">今年维修</i>
                     <ul>
                         <li>
-                            <strong>8926</strong>
+                            <strong>(8926)</strong>
                             <span>contacts</span>
                         </li>
                         <li>
-                            <strong>6253</strong>
+                            <strong>(6253)</strong>
                             <span>feeds</span>
                         </li>
                     </ul>
@@ -126,14 +134,14 @@
             <div class="col-lg-6 col-md-3">
 
                 <div class="social-box google-plus">
-                    <i class="fa fa-google-plus"></i>
+                    <i class="fa">今年维保</i>
                     <ul>
                         <li>
-                            <strong>962</strong>
+                            <strong>(962)</strong>
                             <span>followers</span>
                         </li>
                         <li>
-                            <strong>256</strong>
+                            <strong>(256)</strong>
                             <span>circles</span>
                         </li>
                     </ul>
@@ -148,7 +156,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2><i class="fa fa-spinner red"></i><strong>单据管理</strong></h2>
+                    <h2><i class="fa fa-spinner red"></i><strong>单据监控</strong></h2>
                     <div class="panel-actions">
                         <a href="index.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
                         <a href="index.html#" class="btn-close"><i class="fa fa-times"></i></a>

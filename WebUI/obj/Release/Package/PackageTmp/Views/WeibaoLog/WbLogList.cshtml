@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebUI.WeibaoLog>
+
+@{
+    ViewBag.Title = "维保记录";
+    Layout = "~/Views/Shared/_LayoutMobile.cshtml";
+}
+
+<br /><br />
+<ul class="nav nav-tabs">
+    <li> @Html.ActionLink("设备详情", "cx", "sh", new { id = @ViewBag.ProductSN }, new { @class = "" })</li>
+    <li>@Html.ActionLink("报修记录", "BillList", "BaoxiuBills", new { id = ViewBag.ProductSN }, new { @class = "" })</li>
+    <li class="active"><a href="#">维保记录</a></li>
+</ul>
+<h2>维保记录</h2>
+
+<ul class="list-group">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            <span class="list-group-item-text">
+                @Html.DisplayFor(model => item.WbDate) &nbsp;&nbsp;
+               由 @Html.DisplayFor(model => item.WbRealName)
+                ( @Html.DisplayFor(modelItem => item.WbJobNumber) )&nbsp;保养
+            </span>
+        </li>
+    }
+</ul>

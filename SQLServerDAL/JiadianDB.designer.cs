@@ -30,12 +30,36 @@ namespace Tiyi.JD.SQLServerDAL
 		
     #region 可扩展性方法定义
     partial void OnCreated();
+    partial void Insert__MigrationHistory(__MigrationHistory instance);
+    partial void Update__MigrationHistory(__MigrationHistory instance);
+    partial void Delete__MigrationHistory(__MigrationHistory instance);
     partial void InsertAppliance(Appliance instance);
     partial void UpdateAppliance(Appliance instance);
     partial void DeleteAppliance(Appliance instance);
+    partial void InsertAspNetRoles(AspNetRoles instance);
+    partial void UpdateAspNetRoles(AspNetRoles instance);
+    partial void DeleteAspNetRoles(AspNetRoles instance);
+    partial void InsertAspNetUserClaims(AspNetUserClaims instance);
+    partial void UpdateAspNetUserClaims(AspNetUserClaims instance);
+    partial void DeleteAspNetUserClaims(AspNetUserClaims instance);
+    partial void InsertAspNetUserLogins(AspNetUserLogins instance);
+    partial void UpdateAspNetUserLogins(AspNetUserLogins instance);
+    partial void DeleteAspNetUserLogins(AspNetUserLogins instance);
+    partial void InsertAspNetUserRoles(AspNetUserRoles instance);
+    partial void UpdateAspNetUserRoles(AspNetUserRoles instance);
+    partial void DeleteAspNetUserRoles(AspNetUserRoles instance);
+    partial void InsertAspNetUsers(AspNetUsers instance);
+    partial void UpdateAspNetUsers(AspNetUsers instance);
+    partial void DeleteAspNetUsers(AspNetUsers instance);
     partial void InsertBaoxiuBill(BaoxiuBill instance);
     partial void UpdateBaoxiuBill(BaoxiuBill instance);
     partial void DeleteBaoxiuBill(BaoxiuBill instance);
+    partial void InsertCorporation(Corporation instance);
+    partial void UpdateCorporation(Corporation instance);
+    partial void DeleteCorporation(Corporation instance);
+    partial void InsertFault(Fault instance);
+    partial void UpdateFault(Fault instance);
+    partial void DeleteFault(Fault instance);
     partial void InsertPaigongBill(PaigongBill instance);
     partial void UpdatePaigongBill(PaigongBill instance);
     partial void DeletePaigongBill(PaigongBill instance);
@@ -48,6 +72,9 @@ namespace Tiyi.JD.SQLServerDAL
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
+    partial void InsertWeibaoLog(WeibaoLog instance);
+    partial void UpdateWeibaoLog(WeibaoLog instance);
+    partial void DeleteWeibaoLog(WeibaoLog instance);
     #endregion
 		
 		public JiadianDataContext(string connection) : 
@@ -74,6 +101,14 @@ namespace Tiyi.JD.SQLServerDAL
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<@__MigrationHistory> @__MigrationHistory
+		{
+			get
+			{
+				return this.GetTable<@__MigrationHistory>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Appliance> Appliance
 		{
 			get
@@ -90,11 +125,67 @@ namespace Tiyi.JD.SQLServerDAL
 			}
 		}
 		
+		public System.Data.Linq.Table<AspNetRoles> AspNetRoles
+		{
+			get
+			{
+				return this.GetTable<AspNetRoles>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AspNetUserClaims> AspNetUserClaims
+		{
+			get
+			{
+				return this.GetTable<AspNetUserClaims>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AspNetUserLogins> AspNetUserLogins
+		{
+			get
+			{
+				return this.GetTable<AspNetUserLogins>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AspNetUserRoles> AspNetUserRoles
+		{
+			get
+			{
+				return this.GetTable<AspNetUserRoles>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AspNetUsers> AspNetUsers
+		{
+			get
+			{
+				return this.GetTable<AspNetUsers>();
+			}
+		}
+		
 		public System.Data.Linq.Table<BaoxiuBill> BaoxiuBill
 		{
 			get
 			{
 				return this.GetTable<BaoxiuBill>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Corporation> Corporation
+		{
+			get
+			{
+				return this.GetTable<Corporation>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Fault> Fault
+		{
+			get
+			{
+				return this.GetTable<Fault>();
 			}
 		}
 		
@@ -135,6 +226,140 @@ namespace Tiyi.JD.SQLServerDAL
 			get
 			{
 				return this.GetTable<WeibaoLog>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.__MigrationHistory")]
+	public partial class @__MigrationHistory : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MigrationId;
+		
+		private string _ContextKey;
+		
+		private System.Data.Linq.Binary _Model;
+		
+		private string _ProductVersion;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMigrationIdChanging(string value);
+    partial void OnMigrationIdChanged();
+    partial void OnContextKeyChanging(string value);
+    partial void OnContextKeyChanged();
+    partial void OnModelChanging(System.Data.Linq.Binary value);
+    partial void OnModelChanged();
+    partial void OnProductVersionChanging(string value);
+    partial void OnProductVersionChanged();
+    #endregion
+		
+		public @__MigrationHistory()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MigrationId", DbType="NVarChar(150) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MigrationId
+		{
+			get
+			{
+				return this._MigrationId;
+			}
+			set
+			{
+				if ((this._MigrationId != value))
+				{
+					this.OnMigrationIdChanging(value);
+					this.SendPropertyChanging();
+					this._MigrationId = value;
+					this.SendPropertyChanged("MigrationId");
+					this.OnMigrationIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContextKey", DbType="NVarChar(300) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ContextKey
+		{
+			get
+			{
+				return this._ContextKey;
+			}
+			set
+			{
+				if ((this._ContextKey != value))
+				{
+					this.OnContextKeyChanging(value);
+					this.SendPropertyChanging();
+					this._ContextKey = value;
+					this.SendPropertyChanged("ContextKey");
+					this.OnContextKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Model", DbType="VarBinary(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Model
+		{
+			get
+			{
+				return this._Model;
+			}
+			set
+			{
+				if ((this._Model != value))
+				{
+					this.OnModelChanging(value);
+					this.SendPropertyChanging();
+					this._Model = value;
+					this.SendPropertyChanged("Model");
+					this.OnModelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProductVersion", DbType="NVarChar(32) NOT NULL", CanBeNull=false)]
+		public string ProductVersion
+		{
+			get
+			{
+				return this._ProductVersion;
+			}
+			set
+			{
+				if ((this._ProductVersion != value))
+				{
+					this.OnProductVersionChanging(value);
+					this.SendPropertyChanging();
+					this._ProductVersion = value;
+					this.SendPropertyChanged("ProductVersion");
+					this.OnProductVersionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -730,6 +955,1024 @@ namespace Tiyi.JD.SQLServerDAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AspNetRoles")]
+	public partial class AspNetRoles : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _Name;
+		
+		private EntitySet<AspNetUserRoles> _AspNetUserRoles;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    #endregion
+		
+		public AspNetRoles()
+		{
+			this._AspNetUserRoles = new EntitySet<AspNetUserRoles>(new Action<AspNetUserRoles>(this.attach_AspNetUserRoles), new Action<AspNetUserRoles>(this.detach_AspNetUserRoles));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetRoles_AspNetUserRoles", Storage="_AspNetUserRoles", ThisKey="Id", OtherKey="RoleId")]
+		public EntitySet<AspNetUserRoles> AspNetUserRoles
+		{
+			get
+			{
+				return this._AspNetUserRoles;
+			}
+			set
+			{
+				this._AspNetUserRoles.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_AspNetUserRoles(AspNetUserRoles entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetRoles = this;
+		}
+		
+		private void detach_AspNetUserRoles(AspNetUserRoles entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetRoles = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AspNetUserClaims")]
+	public partial class AspNetUserClaims : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _UserId;
+		
+		private string _ClaimType;
+		
+		private string _ClaimValue;
+		
+		private EntityRef<AspNetUsers> _AspNetUsers;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnUserIdChanging(string value);
+    partial void OnUserIdChanged();
+    partial void OnClaimTypeChanging(string value);
+    partial void OnClaimTypeChanged();
+    partial void OnClaimValueChanging(string value);
+    partial void OnClaimValueChanged();
+    #endregion
+		
+		public AspNetUserClaims()
+		{
+			this._AspNetUsers = default(EntityRef<AspNetUsers>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
+		public string UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._AspNetUsers.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClaimType", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string ClaimType
+		{
+			get
+			{
+				return this._ClaimType;
+			}
+			set
+			{
+				if ((this._ClaimType != value))
+				{
+					this.OnClaimTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ClaimType = value;
+					this.SendPropertyChanged("ClaimType");
+					this.OnClaimTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClaimValue", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string ClaimValue
+		{
+			get
+			{
+				return this._ClaimValue;
+			}
+			set
+			{
+				if ((this._ClaimValue != value))
+				{
+					this.OnClaimValueChanging(value);
+					this.SendPropertyChanging();
+					this._ClaimValue = value;
+					this.SendPropertyChanged("ClaimValue");
+					this.OnClaimValueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUsers_AspNetUserClaims", Storage="_AspNetUsers", ThisKey="UserId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true)]
+		public AspNetUsers AspNetUsers
+		{
+			get
+			{
+				return this._AspNetUsers.Entity;
+			}
+			set
+			{
+				AspNetUsers previousValue = this._AspNetUsers.Entity;
+				if (((previousValue != value) 
+							|| (this._AspNetUsers.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._AspNetUsers.Entity = null;
+						previousValue.AspNetUserClaims.Remove(this);
+					}
+					this._AspNetUsers.Entity = value;
+					if ((value != null))
+					{
+						value.AspNetUserClaims.Add(this);
+						this._UserId = value.Id;
+					}
+					else
+					{
+						this._UserId = default(string);
+					}
+					this.SendPropertyChanged("AspNetUsers");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AspNetUserLogins")]
+	public partial class AspNetUserLogins : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _LoginProvider;
+		
+		private string _ProviderKey;
+		
+		private string _UserId;
+		
+		private EntityRef<AspNetUsers> _AspNetUsers;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnLoginProviderChanging(string value);
+    partial void OnLoginProviderChanged();
+    partial void OnProviderKeyChanging(string value);
+    partial void OnProviderKeyChanged();
+    partial void OnUserIdChanging(string value);
+    partial void OnUserIdChanged();
+    #endregion
+		
+		public AspNetUserLogins()
+		{
+			this._AspNetUsers = default(EntityRef<AspNetUsers>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LoginProvider", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string LoginProvider
+		{
+			get
+			{
+				return this._LoginProvider;
+			}
+			set
+			{
+				if ((this._LoginProvider != value))
+				{
+					this.OnLoginProviderChanging(value);
+					this.SendPropertyChanging();
+					this._LoginProvider = value;
+					this.SendPropertyChanged("LoginProvider");
+					this.OnLoginProviderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProviderKey", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ProviderKey
+		{
+			get
+			{
+				return this._ProviderKey;
+			}
+			set
+			{
+				if ((this._ProviderKey != value))
+				{
+					this.OnProviderKeyChanging(value);
+					this.SendPropertyChanging();
+					this._ProviderKey = value;
+					this.SendPropertyChanged("ProviderKey");
+					this.OnProviderKeyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._AspNetUsers.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUsers_AspNetUserLogins", Storage="_AspNetUsers", ThisKey="UserId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true)]
+		public AspNetUsers AspNetUsers
+		{
+			get
+			{
+				return this._AspNetUsers.Entity;
+			}
+			set
+			{
+				AspNetUsers previousValue = this._AspNetUsers.Entity;
+				if (((previousValue != value) 
+							|| (this._AspNetUsers.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._AspNetUsers.Entity = null;
+						previousValue.AspNetUserLogins.Remove(this);
+					}
+					this._AspNetUsers.Entity = value;
+					if ((value != null))
+					{
+						value.AspNetUserLogins.Add(this);
+						this._UserId = value.Id;
+					}
+					else
+					{
+						this._UserId = default(string);
+					}
+					this.SendPropertyChanged("AspNetUsers");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AspNetUserRoles")]
+	public partial class AspNetUserRoles : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _UserId;
+		
+		private string _RoleId;
+		
+		private EntityRef<AspNetRoles> _AspNetRoles;
+		
+		private EntityRef<AspNetUsers> _AspNetUsers;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIdChanging(string value);
+    partial void OnUserIdChanged();
+    partial void OnRoleIdChanging(string value);
+    partial void OnRoleIdChanged();
+    #endregion
+		
+		public AspNetUserRoles()
+		{
+			this._AspNetRoles = default(EntityRef<AspNetRoles>);
+			this._AspNetUsers = default(EntityRef<AspNetUsers>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._AspNetUsers.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleId", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string RoleId
+		{
+			get
+			{
+				return this._RoleId;
+			}
+			set
+			{
+				if ((this._RoleId != value))
+				{
+					if (this._AspNetRoles.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRoleIdChanging(value);
+					this.SendPropertyChanging();
+					this._RoleId = value;
+					this.SendPropertyChanged("RoleId");
+					this.OnRoleIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetRoles_AspNetUserRoles", Storage="_AspNetRoles", ThisKey="RoleId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true)]
+		public AspNetRoles AspNetRoles
+		{
+			get
+			{
+				return this._AspNetRoles.Entity;
+			}
+			set
+			{
+				AspNetRoles previousValue = this._AspNetRoles.Entity;
+				if (((previousValue != value) 
+							|| (this._AspNetRoles.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._AspNetRoles.Entity = null;
+						previousValue.AspNetUserRoles.Remove(this);
+					}
+					this._AspNetRoles.Entity = value;
+					if ((value != null))
+					{
+						value.AspNetUserRoles.Add(this);
+						this._RoleId = value.Id;
+					}
+					else
+					{
+						this._RoleId = default(string);
+					}
+					this.SendPropertyChanged("AspNetRoles");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUsers_AspNetUserRoles", Storage="_AspNetUsers", ThisKey="UserId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true)]
+		public AspNetUsers AspNetUsers
+		{
+			get
+			{
+				return this._AspNetUsers.Entity;
+			}
+			set
+			{
+				AspNetUsers previousValue = this._AspNetUsers.Entity;
+				if (((previousValue != value) 
+							|| (this._AspNetUsers.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._AspNetUsers.Entity = null;
+						previousValue.AspNetUserRoles.Remove(this);
+					}
+					this._AspNetUsers.Entity = value;
+					if ((value != null))
+					{
+						value.AspNetUserRoles.Add(this);
+						this._UserId = value.Id;
+					}
+					else
+					{
+						this._UserId = default(string);
+					}
+					this.SendPropertyChanged("AspNetUsers");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AspNetUsers")]
+	public partial class AspNetUsers : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _Email;
+		
+		private bool _EmailConfirmed;
+		
+		private string _PasswordHash;
+		
+		private string _SecurityStamp;
+		
+		private string _PhoneNumber;
+		
+		private bool _PhoneNumberConfirmed;
+		
+		private bool _TwoFactorEnabled;
+		
+		private System.Nullable<System.DateTime> _LockoutEndDateUtc;
+		
+		private bool _LockoutEnabled;
+		
+		private int _AccessFailedCount;
+		
+		private string _UserName;
+		
+		private EntitySet<AspNetUserClaims> _AspNetUserClaims;
+		
+		private EntitySet<AspNetUserLogins> _AspNetUserLogins;
+		
+		private EntitySet<AspNetUserRoles> _AspNetUserRoles;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnEmailConfirmedChanging(bool value);
+    partial void OnEmailConfirmedChanged();
+    partial void OnPasswordHashChanging(string value);
+    partial void OnPasswordHashChanged();
+    partial void OnSecurityStampChanging(string value);
+    partial void OnSecurityStampChanged();
+    partial void OnPhoneNumberChanging(string value);
+    partial void OnPhoneNumberChanged();
+    partial void OnPhoneNumberConfirmedChanging(bool value);
+    partial void OnPhoneNumberConfirmedChanged();
+    partial void OnTwoFactorEnabledChanging(bool value);
+    partial void OnTwoFactorEnabledChanged();
+    partial void OnLockoutEndDateUtcChanging(System.Nullable<System.DateTime> value);
+    partial void OnLockoutEndDateUtcChanged();
+    partial void OnLockoutEnabledChanging(bool value);
+    partial void OnLockoutEnabledChanged();
+    partial void OnAccessFailedCountChanging(int value);
+    partial void OnAccessFailedCountChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    #endregion
+		
+		public AspNetUsers()
+		{
+			this._AspNetUserClaims = new EntitySet<AspNetUserClaims>(new Action<AspNetUserClaims>(this.attach_AspNetUserClaims), new Action<AspNetUserClaims>(this.detach_AspNetUserClaims));
+			this._AspNetUserLogins = new EntitySet<AspNetUserLogins>(new Action<AspNetUserLogins>(this.attach_AspNetUserLogins), new Action<AspNetUserLogins>(this.detach_AspNetUserLogins));
+			this._AspNetUserRoles = new EntitySet<AspNetUserRoles>(new Action<AspNetUserRoles>(this.attach_AspNetUserRoles), new Action<AspNetUserRoles>(this.detach_AspNetUserRoles));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(256)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailConfirmed", DbType="Bit NOT NULL")]
+		public bool EmailConfirmed
+		{
+			get
+			{
+				return this._EmailConfirmed;
+			}
+			set
+			{
+				if ((this._EmailConfirmed != value))
+				{
+					this.OnEmailConfirmedChanging(value);
+					this.SendPropertyChanging();
+					this._EmailConfirmed = value;
+					this.SendPropertyChanged("EmailConfirmed");
+					this.OnEmailConfirmedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PasswordHash", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string PasswordHash
+		{
+			get
+			{
+				return this._PasswordHash;
+			}
+			set
+			{
+				if ((this._PasswordHash != value))
+				{
+					this.OnPasswordHashChanging(value);
+					this.SendPropertyChanging();
+					this._PasswordHash = value;
+					this.SendPropertyChanged("PasswordHash");
+					this.OnPasswordHashChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SecurityStamp", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string SecurityStamp
+		{
+			get
+			{
+				return this._SecurityStamp;
+			}
+			set
+			{
+				if ((this._SecurityStamp != value))
+				{
+					this.OnSecurityStampChanging(value);
+					this.SendPropertyChanging();
+					this._SecurityStamp = value;
+					this.SendPropertyChanged("SecurityStamp");
+					this.OnSecurityStampChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNumber", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string PhoneNumber
+		{
+			get
+			{
+				return this._PhoneNumber;
+			}
+			set
+			{
+				if ((this._PhoneNumber != value))
+				{
+					this.OnPhoneNumberChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNumber = value;
+					this.SendPropertyChanged("PhoneNumber");
+					this.OnPhoneNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneNumberConfirmed", DbType="Bit NOT NULL")]
+		public bool PhoneNumberConfirmed
+		{
+			get
+			{
+				return this._PhoneNumberConfirmed;
+			}
+			set
+			{
+				if ((this._PhoneNumberConfirmed != value))
+				{
+					this.OnPhoneNumberConfirmedChanging(value);
+					this.SendPropertyChanging();
+					this._PhoneNumberConfirmed = value;
+					this.SendPropertyChanged("PhoneNumberConfirmed");
+					this.OnPhoneNumberConfirmedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TwoFactorEnabled", DbType="Bit NOT NULL")]
+		public bool TwoFactorEnabled
+		{
+			get
+			{
+				return this._TwoFactorEnabled;
+			}
+			set
+			{
+				if ((this._TwoFactorEnabled != value))
+				{
+					this.OnTwoFactorEnabledChanging(value);
+					this.SendPropertyChanging();
+					this._TwoFactorEnabled = value;
+					this.SendPropertyChanged("TwoFactorEnabled");
+					this.OnTwoFactorEnabledChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LockoutEndDateUtc", DbType="DateTime")]
+		public System.Nullable<System.DateTime> LockoutEndDateUtc
+		{
+			get
+			{
+				return this._LockoutEndDateUtc;
+			}
+			set
+			{
+				if ((this._LockoutEndDateUtc != value))
+				{
+					this.OnLockoutEndDateUtcChanging(value);
+					this.SendPropertyChanging();
+					this._LockoutEndDateUtc = value;
+					this.SendPropertyChanged("LockoutEndDateUtc");
+					this.OnLockoutEndDateUtcChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LockoutEnabled", DbType="Bit NOT NULL")]
+		public bool LockoutEnabled
+		{
+			get
+			{
+				return this._LockoutEnabled;
+			}
+			set
+			{
+				if ((this._LockoutEnabled != value))
+				{
+					this.OnLockoutEnabledChanging(value);
+					this.SendPropertyChanging();
+					this._LockoutEnabled = value;
+					this.SendPropertyChanged("LockoutEnabled");
+					this.OnLockoutEnabledChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccessFailedCount", DbType="Int NOT NULL")]
+		public int AccessFailedCount
+		{
+			get
+			{
+				return this._AccessFailedCount;
+			}
+			set
+			{
+				if ((this._AccessFailedCount != value))
+				{
+					this.OnAccessFailedCountChanging(value);
+					this.SendPropertyChanging();
+					this._AccessFailedCount = value;
+					this.SendPropertyChanged("AccessFailedCount");
+					this.OnAccessFailedCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUsers_AspNetUserClaims", Storage="_AspNetUserClaims", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<AspNetUserClaims> AspNetUserClaims
+		{
+			get
+			{
+				return this._AspNetUserClaims;
+			}
+			set
+			{
+				this._AspNetUserClaims.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUsers_AspNetUserLogins", Storage="_AspNetUserLogins", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<AspNetUserLogins> AspNetUserLogins
+		{
+			get
+			{
+				return this._AspNetUserLogins;
+			}
+			set
+			{
+				this._AspNetUserLogins.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AspNetUsers_AspNetUserRoles", Storage="_AspNetUserRoles", ThisKey="Id", OtherKey="UserId")]
+		public EntitySet<AspNetUserRoles> AspNetUserRoles
+		{
+			get
+			{
+				return this._AspNetUserRoles;
+			}
+			set
+			{
+				this._AspNetUserRoles.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_AspNetUserClaims(AspNetUserClaims entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetUsers = this;
+		}
+		
+		private void detach_AspNetUserClaims(AspNetUserClaims entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetUsers = null;
+		}
+		
+		private void attach_AspNetUserLogins(AspNetUserLogins entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetUsers = this;
+		}
+		
+		private void detach_AspNetUserLogins(AspNetUserLogins entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetUsers = null;
+		}
+		
+		private void attach_AspNetUserRoles(AspNetUserRoles entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetUsers = this;
+		}
+		
+		private void detach_AspNetUserRoles(AspNetUserRoles entity)
+		{
+			this.SendPropertyChanging();
+			entity.AspNetUsers = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BaoxiuBill")]
 	public partial class BaoxiuBill : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -759,6 +2002,8 @@ namespace Tiyi.JD.SQLServerDAL
 		private string _FaultPhenomenon;
 		
 		private System.DateTime _CreateDate;
+		
+		private string _BillStatus;
 		
 		private string _HandleResult;
 		
@@ -800,6 +2045,8 @@ namespace Tiyi.JD.SQLServerDAL
     partial void OnFaultPhenomenonChanged();
     partial void OnCreateDateChanging(System.DateTime value);
     partial void OnCreateDateChanged();
+    partial void OnBillStatusChanging(string value);
+    partial void OnBillStatusChanged();
     partial void OnHandleResultChanging(string value);
     partial void OnHandleResultChanged();
     partial void OnIsAcceptChanging(bool value);
@@ -1062,6 +2309,26 @@ namespace Tiyi.JD.SQLServerDAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillStatus", DbType="NVarChar(64)")]
+		public string BillStatus
+		{
+			get
+			{
+				return this._BillStatus;
+			}
+			set
+			{
+				if ((this._BillStatus != value))
+				{
+					this.OnBillStatusChanging(value);
+					this.SendPropertyChanging();
+					this._BillStatus = value;
+					this.SendPropertyChanged("BillStatus");
+					this.OnBillStatusChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HandleResult", DbType="NVarChar(1024)")]
 		public string HandleResult
 		{
@@ -1217,6 +2484,394 @@ namespace Tiyi.JD.SQLServerDAL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Corporation")]
+	public partial class Corporation : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _CorpId;
+		
+		private string _CorpName;
+		
+		private System.DateTime _CreateDate;
+		
+		private System.Nullable<bool> _OrderIndex;
+		
+		private string _LinkmanName;
+		
+		private string _Telephone;
+		
+		private string _MobilePhone;
+		
+		private string _MobileShort;
+		
+		private string _Email;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCorpIdChanging(System.Guid value);
+    partial void OnCorpIdChanged();
+    partial void OnCorpNameChanging(string value);
+    partial void OnCorpNameChanged();
+    partial void OnCreateDateChanging(System.DateTime value);
+    partial void OnCreateDateChanged();
+    partial void OnOrderIndexChanging(System.Nullable<bool> value);
+    partial void OnOrderIndexChanged();
+    partial void OnLinkmanNameChanging(string value);
+    partial void OnLinkmanNameChanged();
+    partial void OnTelephoneChanging(string value);
+    partial void OnTelephoneChanged();
+    partial void OnMobilePhoneChanging(string value);
+    partial void OnMobilePhoneChanged();
+    partial void OnMobileShortChanging(string value);
+    partial void OnMobileShortChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    #endregion
+		
+		public Corporation()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CorpId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid CorpId
+		{
+			get
+			{
+				return this._CorpId;
+			}
+			set
+			{
+				if ((this._CorpId != value))
+				{
+					this.OnCorpIdChanging(value);
+					this.SendPropertyChanging();
+					this._CorpId = value;
+					this.SendPropertyChanged("CorpId");
+					this.OnCorpIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CorpName", DbType="NVarChar(64) NOT NULL", CanBeNull=false)]
+		public string CorpName
+		{
+			get
+			{
+				return this._CorpName;
+			}
+			set
+			{
+				if ((this._CorpName != value))
+				{
+					this.OnCorpNameChanging(value);
+					this.SendPropertyChanging();
+					this._CorpName = value;
+					this.SendPropertyChanged("CorpName");
+					this.OnCorpNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderIndex", DbType="Bit")]
+		public System.Nullable<bool> OrderIndex
+		{
+			get
+			{
+				return this._OrderIndex;
+			}
+			set
+			{
+				if ((this._OrderIndex != value))
+				{
+					this.OnOrderIndexChanging(value);
+					this.SendPropertyChanging();
+					this._OrderIndex = value;
+					this.SendPropertyChanged("OrderIndex");
+					this.OnOrderIndexChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LinkmanName", DbType="NVarChar(32)")]
+		public string LinkmanName
+		{
+			get
+			{
+				return this._LinkmanName;
+			}
+			set
+			{
+				if ((this._LinkmanName != value))
+				{
+					this.OnLinkmanNameChanging(value);
+					this.SendPropertyChanging();
+					this._LinkmanName = value;
+					this.SendPropertyChanged("LinkmanName");
+					this.OnLinkmanNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telephone", DbType="NVarChar(32)")]
+		public string Telephone
+		{
+			get
+			{
+				return this._Telephone;
+			}
+			set
+			{
+				if ((this._Telephone != value))
+				{
+					this.OnTelephoneChanging(value);
+					this.SendPropertyChanging();
+					this._Telephone = value;
+					this.SendPropertyChanged("Telephone");
+					this.OnTelephoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobilePhone", DbType="NVarChar(32)")]
+		public string MobilePhone
+		{
+			get
+			{
+				return this._MobilePhone;
+			}
+			set
+			{
+				if ((this._MobilePhone != value))
+				{
+					this.OnMobilePhoneChanging(value);
+					this.SendPropertyChanging();
+					this._MobilePhone = value;
+					this.SendPropertyChanged("MobilePhone");
+					this.OnMobilePhoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MobileShort", DbType="NVarChar(16)")]
+		public string MobileShort
+		{
+			get
+			{
+				return this._MobileShort;
+			}
+			set
+			{
+				if ((this._MobileShort != value))
+				{
+					this.OnMobileShortChanging(value);
+					this.SendPropertyChanging();
+					this._MobileShort = value;
+					this.SendPropertyChanged("MobileShort");
+					this.OnMobileShortChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(64)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Fault")]
+	public partial class Fault : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _FaultId;
+		
+		private string _FaultText;
+		
+		private string _BigClass;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnFaultIdChanging(System.Guid value);
+    partial void OnFaultIdChanged();
+    partial void OnFaultTextChanging(string value);
+    partial void OnFaultTextChanged();
+    partial void OnBigClassChanging(string value);
+    partial void OnBigClassChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    #endregion
+		
+		public Fault()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FaultId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid FaultId
+		{
+			get
+			{
+				return this._FaultId;
+			}
+			set
+			{
+				if ((this._FaultId != value))
+				{
+					this.OnFaultIdChanging(value);
+					this.SendPropertyChanging();
+					this._FaultId = value;
+					this.SendPropertyChanged("FaultId");
+					this.OnFaultIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FaultText", DbType="NVarChar(64)")]
+		public string FaultText
+		{
+			get
+			{
+				return this._FaultText;
+			}
+			set
+			{
+				if ((this._FaultText != value))
+				{
+					this.OnFaultTextChanging(value);
+					this.SendPropertyChanging();
+					this._FaultText = value;
+					this.SendPropertyChanged("FaultText");
+					this.OnFaultTextChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BigClass", DbType="NVarChar(32)")]
+		public string BigClass
+		{
+			get
+			{
+				return this._BigClass;
+			}
+			set
+			{
+				if ((this._BigClass != value))
+				{
+					this.OnBigClassChanging(value);
+					this.SendPropertyChanging();
+					this._BigClass = value;
+					this.SendPropertyChanged("BigClass");
+					this.OnBigClassChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.PaigongBill")]
 	public partial class PaigongBill : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1248,6 +2903,10 @@ namespace Tiyi.JD.SQLServerDAL
 		private string _FaultPhenomenon;
 		
 		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private bool _IsAccept;
+		
+		private System.Nullable<System.DateTime> _AcceptDate;
 		
 		private string _HandleResult;
 		
@@ -1293,6 +2952,10 @@ namespace Tiyi.JD.SQLServerDAL
     partial void OnFaultPhenomenonChanged();
     partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
     partial void OnCreateDateChanged();
+    partial void OnIsAcceptChanging(bool value);
+    partial void OnIsAcceptChanged();
+    partial void OnAcceptDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnAcceptDateChanged();
     partial void OnHandleResultChanging(string value);
     partial void OnHandleResultChanged();
     partial void OnWxgIdChanging(System.Nullable<System.Guid> value);
@@ -1570,6 +3233,46 @@ namespace Tiyi.JD.SQLServerDAL
 					this._CreateDate = value;
 					this.SendPropertyChanged("CreateDate");
 					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsAccept", DbType="Bit NOT NULL")]
+		public bool IsAccept
+		{
+			get
+			{
+				return this._IsAccept;
+			}
+			set
+			{
+				if ((this._IsAccept != value))
+				{
+					this.OnIsAcceptChanging(value);
+					this.SendPropertyChanging();
+					this._IsAccept = value;
+					this.SendPropertyChanged("IsAccept");
+					this.OnIsAcceptChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AcceptDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> AcceptDate
+		{
+			get
+			{
+				return this._AcceptDate;
+			}
+			set
+			{
+				if ((this._AcceptDate != value))
+				{
+					this.OnAcceptDateChanging(value);
+					this.SendPropertyChanging();
+					this._AcceptDate = value;
+					this.SendPropertyChanged("AcceptDate");
+					this.OnAcceptDateChanged();
 				}
 			}
 		}
@@ -2186,12 +3889,14 @@ namespace Tiyi.JD.SQLServerDAL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.WeibaoLog")]
-	public partial class WeibaoLog
+	public partial class WeibaoLog : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private System.Guid _WbId;
 		
-		private System.Guid _AppId;
+		private System.Nullable<System.Guid> _AppId;
 		
 		private string _FixedSN;
 		
@@ -2207,7 +3912,7 @@ namespace Tiyi.JD.SQLServerDAL
 		
 		private string _Address;
 		
-		private System.DateTime _CreateDate;
+		private System.Nullable<System.DateTime> _CreateDate;
 		
 		private string _WbContent;
 		
@@ -2219,11 +3924,48 @@ namespace Tiyi.JD.SQLServerDAL
 		
 		private string _WbRealName;
 		
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnWbIdChanging(System.Guid value);
+    partial void OnWbIdChanged();
+    partial void OnAppIdChanging(System.Nullable<System.Guid> value);
+    partial void OnAppIdChanged();
+    partial void OnFixedSNChanging(string value);
+    partial void OnFixedSNChanged();
+    partial void OnAssetSNChanging(string value);
+    partial void OnAssetSNChanged();
+    partial void OnProductSNChanging(string value);
+    partial void OnProductSNChanged();
+    partial void OnBigClassChanging(string value);
+    partial void OnBigClassChanged();
+    partial void OnAppTypeChanging(string value);
+    partial void OnAppTypeChanged();
+    partial void OnOwerDepNameChanging(string value);
+    partial void OnOwerDepNameChanged();
+    partial void OnAddressChanging(string value);
+    partial void OnAddressChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnWbContentChanging(string value);
+    partial void OnWbContentChanged();
+    partial void OnRemarkChanging(string value);
+    partial void OnRemarkChanged();
+    partial void OnWbDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnWbDateChanged();
+    partial void OnWbJobNumberChanging(string value);
+    partial void OnWbJobNumberChanged();
+    partial void OnWbRealNameChanging(string value);
+    partial void OnWbRealNameChanged();
+    #endregion
+		
 		public WeibaoLog()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WbId", DbType="UniqueIdentifier NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WbId", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
 		public System.Guid WbId
 		{
 			get
@@ -2234,13 +3976,17 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._WbId != value))
 				{
+					this.OnWbIdChanging(value);
+					this.SendPropertyChanging();
 					this._WbId = value;
+					this.SendPropertyChanged("WbId");
+					this.OnWbIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AppId", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid AppId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AppId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> AppId
 		{
 			get
 			{
@@ -2250,7 +3996,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._AppId != value))
 				{
+					this.OnAppIdChanging(value);
+					this.SendPropertyChanging();
 					this._AppId = value;
+					this.SendPropertyChanged("AppId");
+					this.OnAppIdChanged();
 				}
 			}
 		}
@@ -2266,7 +4016,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._FixedSN != value))
 				{
+					this.OnFixedSNChanging(value);
+					this.SendPropertyChanging();
 					this._FixedSN = value;
+					this.SendPropertyChanged("FixedSN");
+					this.OnFixedSNChanged();
 				}
 			}
 		}
@@ -2282,7 +4036,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._AssetSN != value))
 				{
+					this.OnAssetSNChanging(value);
+					this.SendPropertyChanging();
 					this._AssetSN = value;
+					this.SendPropertyChanged("AssetSN");
+					this.OnAssetSNChanged();
 				}
 			}
 		}
@@ -2298,7 +4056,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._ProductSN != value))
 				{
+					this.OnProductSNChanging(value);
+					this.SendPropertyChanging();
 					this._ProductSN = value;
+					this.SendPropertyChanged("ProductSN");
+					this.OnProductSNChanged();
 				}
 			}
 		}
@@ -2314,7 +4076,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._BigClass != value))
 				{
+					this.OnBigClassChanging(value);
+					this.SendPropertyChanging();
 					this._BigClass = value;
+					this.SendPropertyChanged("BigClass");
+					this.OnBigClassChanged();
 				}
 			}
 		}
@@ -2330,7 +4096,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._AppType != value))
 				{
+					this.OnAppTypeChanging(value);
+					this.SendPropertyChanging();
 					this._AppType = value;
+					this.SendPropertyChanged("AppType");
+					this.OnAppTypeChanged();
 				}
 			}
 		}
@@ -2346,7 +4116,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._OwerDepName != value))
 				{
+					this.OnOwerDepNameChanging(value);
+					this.SendPropertyChanging();
 					this._OwerDepName = value;
+					this.SendPropertyChanged("OwerDepName");
+					this.OnOwerDepNameChanged();
 				}
 			}
 		}
@@ -2362,13 +4136,17 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._Address != value))
 				{
+					this.OnAddressChanging(value);
+					this.SendPropertyChanging();
 					this._Address = value;
+					this.SendPropertyChanged("Address");
+					this.OnAddressChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime NOT NULL")]
-		public System.DateTime CreateDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
 		{
 			get
 			{
@@ -2378,7 +4156,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._CreateDate != value))
 				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
 					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
 				}
 			}
 		}
@@ -2394,7 +4176,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._WbContent != value))
 				{
+					this.OnWbContentChanging(value);
+					this.SendPropertyChanging();
 					this._WbContent = value;
+					this.SendPropertyChanged("WbContent");
+					this.OnWbContentChanged();
 				}
 			}
 		}
@@ -2410,7 +4196,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._Remark != value))
 				{
+					this.OnRemarkChanging(value);
+					this.SendPropertyChanging();
 					this._Remark = value;
+					this.SendPropertyChanged("Remark");
+					this.OnRemarkChanged();
 				}
 			}
 		}
@@ -2426,7 +4216,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._WbDate != value))
 				{
+					this.OnWbDateChanging(value);
+					this.SendPropertyChanging();
 					this._WbDate = value;
+					this.SendPropertyChanged("WbDate");
+					this.OnWbDateChanged();
 				}
 			}
 		}
@@ -2442,7 +4236,11 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._WbJobNumber != value))
 				{
+					this.OnWbJobNumberChanging(value);
+					this.SendPropertyChanging();
 					this._WbJobNumber = value;
+					this.SendPropertyChanged("WbJobNumber");
+					this.OnWbJobNumberChanged();
 				}
 			}
 		}
@@ -2458,8 +4256,32 @@ namespace Tiyi.JD.SQLServerDAL
 			{
 				if ((this._WbRealName != value))
 				{
+					this.OnWbRealNameChanging(value);
+					this.SendPropertyChanging();
 					this._WbRealName = value;
+					this.SendPropertyChanged("WbRealName");
+					this.OnWbRealNameChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

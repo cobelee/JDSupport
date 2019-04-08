@@ -42,6 +42,7 @@ public partial class DataDetail : System.Web.UI.Page
             Guid.TryParse(hfAppId.Value, out appId);
 
             Tiyi.JD.SQLServerDAL.Appliance app = bllApp.GetAppliance(appId);
+            app.ProductSN = (formView.FindControl("tbProductSN") as TextBox).Text;
             app.BigClass = (formView.FindControl("tbBigClass") as TextBox).Text;
             app.AppType = (formView.FindControl("tbAppType") as TextBox).Text;
             app.Model = (formView.FindControl("tbModel") as TextBox).Text;

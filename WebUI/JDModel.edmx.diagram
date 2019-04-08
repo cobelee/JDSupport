@@ -9,10 +9,13 @@
         <EntityTypeShape EntityType="JDDBModel.Appliance" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="JDDBModel.User" Width="1.5" PointX="5.625" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="JDDBModel.AppUser" />
-        <EntityTypeShape EntityType="JDDBModel.BaoxiuBill" Width="1.75" PointX="5.625" PointY="3.625" />
+        <EntityTypeShape EntityType="JDDBModel.BaoxiuBill" Width="1.75" PointX="5.625" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="JDDBModel.FK_BaoxiuBill_Appliance" />
         <EntityTypeShape EntityType="JDDBModel.PaigongBill" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="JDDBModel.Repairman" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="JDDBModel.WeibaoLog" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="JDDBModel.Corporation" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="JDDBModel.Fault" Width="1.5" PointX="0.75" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

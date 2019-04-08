@@ -31,5 +31,8 @@ namespace WebUI
         public virtual DbSet<BaoxiuBill> BaoxiuBills { get; set; }
         public virtual DbSet<PaigongBill> PaigongBills { get; set; }
         public virtual DbSet<Repairman> Repairmen { get; set; }
+        public virtual DbSet<WeibaoLog> WeibaoLogs { get; set; }
+        public virtual DbSet<Corporation> Corporations { get; set; }
+        public virtual DbSet<Fault> Faults { get; set; }
     }
 }

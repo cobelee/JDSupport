@@ -29,6 +29,27 @@ namespace Tiyi.JD.BLL
         }
 
         /// <summary>
+        /// 获取指定状态的派工单数量
+        /// </summary>
+        /// <param name="isAccept">维修工是否接单</param>
+        /// <param name="isClosed">派工单是否处理完毕</param>
+        /// <returns></returns>
+        public int GetCount(bool isAccept, bool isClosed)
+        {
+            return da.GetCount(isAccept, isClosed);
+        }
+
+        /// <summary>
+        /// 获取当前维修工接单数量。
+        /// </summary>
+        /// <param name="wxgId">维修工Id</param>
+        /// <returns></returns>
+        public int GetCountOfAcceptBill(Guid wxgId)
+        {
+            return da.GetCountOfAcceptBill(wxgId);
+        }
+
+        /// <summary>
         /// 创建新的派工单。
         /// </summary>
         /// <param name="newBxBill">派工单</param>
@@ -68,6 +89,18 @@ namespace Tiyi.JD.BLL
         {
             return da.GetPaigongBill(pgId);
         }
+
+        /// <summary>
+        /// 获取指定维修工的派工单。
+        /// </summary>
+        /// <param name="wxgId">维修工Id</param>
+        /// <param name="isClosed">是否关闭标记</param>
+        /// <returns></returns>
+        public IQueryable<PaigongBill> GetPaigongBill(Guid wxgId, bool isClosed)
+        {
+            return da.GetPaigongBill(wxgId, isClosed);
+        }
+
 
 
         /// <summary>

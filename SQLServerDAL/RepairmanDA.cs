@@ -88,6 +88,19 @@ namespace Tiyi.JD.SQLServerDAL
         }
 
         /// <summary>
+        /// 获取指定工号的修理工
+        /// </summary>
+        /// <param name="jobNumber">修理工工号</param>
+        /// <returns></returns>
+        public Tiyi.JD.SQLServerDAL.Repairman GetRepairmanByJobNumber(string jobNumber)
+        {
+            var query = from c in dbContext.Repairman
+                        where c.JobNumber == jobNumber
+                        select c;
+            return query.FirstOrDefault<Tiyi.JD.SQLServerDAL.Repairman>();
+        }
+
+        /// <summary>
         /// 删除人员
         /// </summary>
         /// <param name="WxgId">维修工Id</param>

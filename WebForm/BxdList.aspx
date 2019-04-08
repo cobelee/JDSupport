@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="BxdList.aspx.cs" Inherits="BxdList" %>
+﻿<%@ Page Title="设备报修单" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="BxdList.aspx.cs" Inherits="BxdList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -8,7 +8,7 @@
             <h3 class="page-header"><i class="fa fa-laptop"></i></h3>
             <ol class="breadcrumb">
                 <li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-                <li><i class="fa fa-cogs"></i><a href="BxdList.aspx">报修单列表</a></li>
+                <li><i class="fa fa-cogs"></i><a href="BxdList.aspx">设备维修管理</a></li>
                 <li><i class="fa  fa-group"></i>设备报修单</li>
             </ol>
         </div>
@@ -30,7 +30,7 @@
                 <div class="panel-body">
                     <asp:Repeater ID="rptBxd" runat="server">
                         <HeaderTemplate>
-                            <table class="table table-hover">
+                            <table class="table table-striped  table-hover bootstrap-datatable datatable">
                                 <thead>
                                     <tr>
                                         <th>#
@@ -41,7 +41,7 @@
                                         <th>所在地址</th>
                                         <th>故障现象</th>
                                         <th>联系人</th>
-                                        <th>派工状态</th>
+                                        <th>状态</th>
                                         <td>操作</td>
                                     </tr>
                                 </thead>
@@ -70,9 +70,10 @@
                                     <asp:Literal ID="ltlUserName" runat="server" Text='<%# Eval("UserName") %>'></asp:Literal>
                                     <asp:Literal ID="ltlUserMobilePhone" runat="server" Text='<%# Eval("UserMobilePhone") %>'></asp:Literal>
                                 </td>
+
                                 <td>
                                     <span class="label label-success">
-                                        <asp:Literal ID="Literal2" runat="server" Text='<%# GetIsPaidang(Eval("BxId").ToString()) ? "已派单" : "" %>'></asp:Literal></span>
+                                        <asp:Literal ID="ltlBillStatus" runat="server" Text='<%# Eval("BillStatus")%>'></asp:Literal></span>
                                 </td>
                                 <td>
                                     <div class="btn-group">

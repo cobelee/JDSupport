@@ -10,6 +10,7 @@ public partial class Bxd_WorkOrder : System.Web.UI.Page
     Tiyi.JD.BLL.ApplianceManage bll_appManage = new Tiyi.JD.BLL.ApplianceManage();
     Tiyi.JD.BLL.BaoxiuManage bll_bxdManage = new Tiyi.JD.BLL.BaoxiuManage();
     Tiyi.JD.BLL.RepairmanManage bll_wxg = new Tiyi.JD.BLL.RepairmanManage();
+    Tiyi.JD.BLL.PaigongManage bll_paigong = new Tiyi.JD.BLL.PaigongManage();
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -62,8 +63,8 @@ public partial class Bxd_WorkOrder : System.Web.UI.Page
     private void Load_Wxg()
     {
         var wxgs = bll_wxg.GetRepairman();
-        rptApp.DataSource = wxgs;
-        rptApp.DataBind();
+        rptWxg.DataSource = wxgs;
+        rptWxg.DataBind();
     }
 
     private void LoadAppInfo(Guid appId)
@@ -94,7 +95,18 @@ public partial class Bxd_WorkOrder : System.Web.UI.Page
         ltlAddress.Text = bill.DepName + bill.Address;
         ltlUserName.Text = bill.UserName;
         ltlUserMobilePhone.Text = bill.UserMobilePhone;
+        ltlUserMobileShort.Text = bill.UserMobileShort;
     }
 
 
+
+    protected void rptWxg_ItemDataBound(object sender, RepeaterItemEventArgs e)
+    {
+        if (e.Item.ItemType== ListItemType.Item && e.Item.ItemType == ListItemType.AlternatingItem)
+        {
+            Literal ltlCountOf_AB = e.Item.FindControl("ltlCountOf_AB") as Literal;
+            Tiyi.JD.SQLServerDAL.Repairman wxg = e.Item.DataItem as Tiyi.JD.SQLServerDAL.Repairman;
+            ltlCountOf_AB.Text = bll_paigong.GetCountOfAcceptBill(wxg.WxgId).ToString();
+        }
+    }
 }

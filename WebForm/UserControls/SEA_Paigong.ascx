@@ -176,6 +176,7 @@
                 <div class="col-md-9">
                     <p>
                         <asp:Literal ID="Literal3" runat="server" Text='<%# Eval("WxgRealName") %>'></asp:Literal>
+                        <asp:HiddenField ID="hfWxgId" runat="server" Value='<%# Eval("WxgId") %>' />
                     </p>
                 </div>
             </div>

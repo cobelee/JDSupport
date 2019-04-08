@@ -34,12 +34,12 @@
                         </div>
                         <!--/.col-->
                         <div class="col-xs-4">
-                            <div><strong>3</strong></div>
+                            <div><strong>3？</strong></div>
                             <div><small>已维修</small></div>
                         </div>
                         <!--/.col-->
                         <div class="col-xs-4">
-                            <div><strong>1024天</strong></div>
+                            <div><strong>1024天？</strong></div>
                             <div><small>已运行</small></div>
                         </div>
                         <!--/.col-->
@@ -87,8 +87,8 @@
                             <asp:Literal ID="ltlUserMobilePhone" runat="server"></asp:Literal>
                         </li>
                         <li>
-                            <div><i class="fa fa-envelope"></i>E-mail</div>
-                            空
+                            <div><i class="fa fa-envelope"></i>短号</div>
+                            <asp:Literal ID="ltlUserMobileShort" runat="server"></asp:Literal>
                         </li>
                         <li>
                             <div><i class="fa fa-map-marker"></i>安装地址</div>
@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    <asp:Repeater ID="rptApp" runat="server">
+                    <asp:Repeater ID="rptWxg" runat="server" OnItemDataBound="rptWxg_ItemDataBound">
                         <HeaderTemplate>
                             <table class="table table-striped">
                                 <thead>
@@ -148,7 +148,7 @@
                                 <td><%# Eval("JobNumber") %></td>
                                 <td><%# Eval("MobilePhone") %></td>
                                 <td>
-                                    <asp:Literal ID="Literal1" runat="server" Text="2"></asp:Literal></td>
+                                    <asp:Literal ID="ltlCountOf_AB" runat="server" Text="0"></asp:Literal></td>
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>

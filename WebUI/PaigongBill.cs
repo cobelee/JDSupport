@@ -34,5 +34,7 @@ namespace WebUI
         public string WxgMobileShort { get; set; }
         public bool IsClosed { get; set; }
         public string Remark { get; set; }
+        public bool IsAccept { get; set; }
+        public Nullable<System.DateTime> AcceptDate { get; set; }
     }
 }

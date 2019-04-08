@@ -35,21 +35,7 @@ namespace WebUI.Controllers
             return View(appliance);
         }
 
-        // GET: Appliances/Details/5
-        public ActionResult cx(string id)
-        {
-            if (id == null)
-            {
-                //return RedirectToAction("NotFoundApp");
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Appliance appliance = db.Appliances.FirstOrDefault(o => o.ProductSN == id);
-            if (appliance == null)
-            {
-                return HttpNotFound();
-            }
-            return View(appliance);
-        }
+        
 
         // GET: Appliances/Create
         public ActionResult Create()

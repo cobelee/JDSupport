@@ -15,8 +15,8 @@ namespace WebUI
 
             routes.MapRoute(
                 name: "ShQuery",
-                url: "sh/cx/{id}",
-                defaults: new { controller = "Appliances", action = "cx", id = UrlParameter.Optional }
+                url: "Sh/cx/{id}",
+            defaults: new { controller = "Sh", action = "cx", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

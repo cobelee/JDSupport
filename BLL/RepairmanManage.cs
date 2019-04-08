@@ -59,6 +59,16 @@ namespace Tiyi.JD.BLL
         }
 
         /// <summary>
+        /// 获取指定工号的修理工
+        /// </summary>
+        /// <param name="jobNumber">修理工工号</param>
+        /// <returns></returns>
+        public Tiyi.JD.SQLServerDAL.Repairman GetRepairmanByJobNumber(string jobNumber)
+        {
+            return da.GetRepairmanByJobNumber(jobNumber);
+        }
+
+        /// <summary>
         /// 删除人员
         /// </summary>
         /// <param name="wxgId">维修工Id</param>

@@ -39,6 +39,17 @@ namespace Tiyi.JD.SQLServerDAL
         }
 
         /// <summary>
+        /// 获取设备总数
+        /// </summary>
+        /// <returns></returns>
+        public int GetCount_Appliance()
+        {
+            int count = 0;
+            count = dbContext.Appliance.Where(a => a.IsScrapped == false).Count();
+            return count;
+        }
+
+        /// <summary>
         /// 创建新的设备。
         /// </summary>
         /// <param name="newBxBill">设备</param>
@@ -128,12 +139,36 @@ namespace Tiyi.JD.SQLServerDAL
         }
 
         /// <summary>
+        /// 获取指定appId的设备
+        /// </summary>
+        /// <param name="productSN">设备ID</param>
+        /// <returns></returns>
+        public Appliance GetAppliance(string productSN)
+        {
+            var query = from item in dbContext.Appliance
+                        where item.ProductSN == productSN
+                        select item;
+            Appliance bill = query.FirstOrDefault();
+            return bill;
+        }
+
+        /// <summary>
         /// 获取所有的设备所属公司名称列表
         /// </summary>
         /// <returns></returns>
         public IQueryable<String> GetCorpNameList()
         {
             var query = dbContext.Appliance.GroupBy(p => p.OwnerDepName).Select(g => g.FirstOrDefault().OwnerDepName);
+            return query.AsQueryable<String>();
+        }
+
+        /// <summary>
+        /// 获取指定产品大类的设备所属公司名称列表
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<String> GetCorpNameList(string bigClass)
+        {
+            var query = dbContext.Appliance.Where(o => o.BigClass == bigClass).GroupBy(p => p.OwnerDepName).Select(g => g.FirstOrDefault().OwnerDepName);
             return query.AsQueryable<String>();
         }
 
@@ -246,6 +281,31 @@ namespace Tiyi.JD.SQLServerDAL
         {
             var query = from s in dbContext.Appliance
                         where s.ProductSN == productSN
+                        select s;
+            foreach (var para in query)
+            {
+                dbContext.Appliance.DeleteOnSubmit(para);
+            }
+
+            try
+            {
+                dbContext.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        /// <summary>
+        /// 删除指定设备记录。
+        /// By AppId.
+        /// </summary>
+        /// <param name="appId">设备系统Id.</param>
+        public void DeleteAppliance(Guid appId)
+        {
+            var query = from s in dbContext.Appliance
+                        where s.AppId == appId
                         select s;
             foreach (var para in query)
             {

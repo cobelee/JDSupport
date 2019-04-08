@@ -39,6 +39,33 @@ namespace Tiyi.JD.SQLServerDAL
         }
 
         /// <summary>
+        /// 获取指定状态的派工单数量
+        /// </summary>
+        /// <param name="isAccept">维修工是否接单</param>
+        /// <param name="isClosed">派工单是否处理完毕</param>
+        /// <returns></returns>
+        public int GetCount(bool isAccept, bool isClosed)
+        {
+            return dbContext.PaigongBill.Where(a => a.IsAccept == isAccept && a.IsClosed == isClosed).Count();
+        }
+
+        /// <summary>
+        /// 获取当前维修工接单数量。
+        /// </summary>
+        /// <param name="wxgId">维修工Id</param>
+        /// <returns></returns>
+        public int GetCountOfAcceptBill(Guid wxgId)
+        {
+            int c = 0;
+            var bills = from b in dbContext.PaigongBill
+                        where b.WxgId == wxgId && b.IsClosed == false && b.IsAccept == true
+                        select b;
+            if (bills != null)
+                c = bills.Count();
+            return c;
+        }
+
+        /// <summary>
         /// 创建新的派工单。
         /// </summary>
         /// <param name="newBxBill">派工单</param>
@@ -114,6 +141,20 @@ namespace Tiyi.JD.SQLServerDAL
                         select item;
             PaigongBill bill = query.FirstOrDefault();
             return bill;
+        }
+
+        /// <summary>
+        /// 获取指定维修工的派工单。
+        /// </summary>
+        /// <param name="wxgId">维修工Id</param>
+        /// <param name="isClosed">是否关闭标记</param>
+        /// <returns></returns>
+        public IQueryable<PaigongBill> GetPaigongBill(Guid wxgId, bool isClosed)
+        {
+            var query = from item in dbContext.PaigongBill
+                        where item.WxgId == wxgId && item.IsClosed == isClosed
+                        select item;
+            return query.AsQueryable<PaigongBill>();
         }
 
 

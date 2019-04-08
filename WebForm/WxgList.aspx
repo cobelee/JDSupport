@@ -37,6 +37,7 @@
                                         <th>工号</th>
                                         <th>姓名</th>
                                         <th>手机号码</th>
+                                        <th>炼化短号</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
@@ -47,6 +48,7 @@
                                 <td><%# Eval("JobNumber") %></td>
                                 <td><%# Eval("RealName") %></td>
                                 <td><%# Eval("MobilePhone") %></td>
+                                <td><%# Eval("MobileShort") %></td>
                                 <td><a class="btn btn-success" href='<%# "WxgDetail.aspx?id=" + Eval("WxgId").ToString() + "&mode=ReadOnly" %>'>
                                     <i class="fa fa-list"></i>
                                 </a>

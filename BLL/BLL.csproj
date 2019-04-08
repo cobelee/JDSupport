@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="ApplianceManage.cs" />
     <Compile Include="BaoxiuManage.cs" />
+    <Compile Include="CorpManage.cs" />
+    <Compile Include="FaultManage.cs" />
     <Compile Include="PaigongManage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepairmanManage.cs" />

@@ -49,6 +49,7 @@ public partial class Bxd_Cancel : System.Web.UI.Page
             Tiyi.JD.SQLServerDAL.BaoxiuBill bill = bll_bxdManage.GetBaoxiuBill(bxdId);
             bill.HandleResult = "管理员取消了此报修单，原因：" + tbHandleResult.Text;
             bill.IsCanceled = true;
+            bill.IsCompleted = true;
             bll_bxdManage.UpdateBaoxiuBill(bill);
             Response.Redirect("BxdList.aspx");
         }

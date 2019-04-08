@@ -56,11 +56,35 @@
           <Property Name="UserMobileShort" Type="nvarchar" MaxLength="32" />
           <Property Name="FaultPhenomenon" Type="nvarchar" MaxLength="1024" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="BillStatus" Type="nvarchar" MaxLength="64" />
           <Property Name="HandleResult" Type="nvarchar" MaxLength="1024" />
           <Property Name="IsAccept" Type="bit" Nullable="false" />
           <Property Name="IsCanceled" Type="bit" Nullable="false" />
           <Property Name="IsCompleted" Type="bit" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="Corporation">
+          <Key>
+            <PropertyRef Name="CorpId" />
+          </Key>
+          <Property Name="CorpId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CorpName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="OrderIndex" Type="bit" />
+          <Property Name="LinkmanName" Type="nvarchar" MaxLength="32" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="32" />
+          <Property Name="MobilePhone" Type="nvarchar" MaxLength="32" />
+          <Property Name="MobileShort" Type="nvarchar" MaxLength="16" />
+          <Property Name="Email" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Fault">
+          <Key>
+            <PropertyRef Name="FaultId" />
+          </Key>
+          <Property Name="FaultId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FaultText" Type="nvarchar" MaxLength="64" />
+          <Property Name="BigClass" Type="nvarchar" MaxLength="32" />
+          <Property Name="CreateDate" Type="datetime" />
         </EntityType>
         <EntityType Name="PaigongBill">
           <Key>
@@ -79,6 +103,8 @@
           <Property Name="UserMobileShort" Type="nvarchar" MaxLength="16" />
           <Property Name="FaultPhenomenon" Type="nvarchar" MaxLength="1024" />
           <Property Name="CreateDate" Type="datetime" />
+          <Property Name="IsAccept" Type="bit" Nullable="false" />
+          <Property Name="AcceptDate" Type="datetime" />
           <Property Name="HandleResult" Type="nvarchar" MaxLength="1024" />
           <Property Name="WxgId" Type="uniqueidentifier" />
           <Property Name="WxgRealName" Type="nvarchar" MaxLength="32" />
@@ -115,6 +141,26 @@
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="32" />
           <Property Name="UserMobilePhone" Type="nvarchar" MaxLength="32" />
+        </EntityType>
+        <EntityType Name="WeibaoLog">
+          <Key>
+            <PropertyRef Name="WbId" />
+          </Key>
+          <Property Name="WbId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AppId" Type="uniqueidentifier" />
+          <Property Name="FixedSN" Type="nvarchar" MaxLength="32" />
+          <Property Name="AssetSN" Type="nvarchar" MaxLength="64" />
+          <Property Name="ProductSN" Type="nvarchar" MaxLength="32" />
+          <Property Name="BigClass" Type="nvarchar" MaxLength="32" />
+          <Property Name="AppType" Type="nvarchar" MaxLength="32" />
+          <Property Name="OwerDepName" Type="nvarchar" MaxLength="32" />
+          <Property Name="Address" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="WbContent" Type="nvarchar" MaxLength="128" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="512" />
+          <Property Name="WbDate" Type="datetime" />
+          <Property Name="WbJobNumber" Type="nvarchar" MaxLength="32" />
+          <Property Name="WbRealName" Type="nvarchar" MaxLength="32" />
         </EntityType>
         <Association Name="FK_AppUser_Appliance">
           <End Role="Appliance" Type="Self.Appliance" Multiplicity="1" />
@@ -155,10 +201,13 @@
         <EntityContainer Name="JDDBModelStoreContainer">
           <EntitySet Name="Appliance" EntityType="Self.Appliance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaoxiuBill" EntityType="Self.BaoxiuBill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Corporation" EntityType="Self.Corporation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fault" EntityType="Self.Fault" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaigongBill" EntityType="Self.PaigongBill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductSN" EntityType="Self.ProductSN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Repairman" EntityType="Self.Repairman" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeibaoLog" EntityType="Self.WeibaoLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AppUser" EntityType="Self.AppUser" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [AppUser].[AppId] AS [AppId], 
@@ -197,6 +246,9 @@
           </AssociationSet>
           <EntitySet Name="PaigongBills" EntityType="JDDBModel.PaigongBill" />
           <EntitySet Name="Repairmen" EntityType="JDDBModel.Repairman" />
+          <EntitySet Name="WeibaoLogs" EntityType="JDDBModel.WeibaoLog" />
+          <EntitySet Name="Corporations" EntityType="JDDBModel.Corporation" />
+          <EntitySet Name="Faults" EntityType="JDDBModel.Fault" />
         </EntityContainer>
         <EntityType Name="ProductSN">
           <Key>
@@ -275,6 +327,7 @@
           <Property Name="UserMobileShort" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
           <Property Name="IsCanceled" Type="Boolean" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="BillStatus" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_BaoxiuBill_Appliance">
           <End Type="JDDBModel.Appliance" Role="Appliance" Multiplicity="1" />
@@ -312,6 +365,8 @@
           <Property Name="WxgMobileShort" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="IsClosed" Type="Boolean" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="IsAccept" Type="Boolean" Nullable="false" />
+          <Property Name="AcceptDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Repairman">
           <Key>
@@ -322,6 +377,49 @@
           <Property Name="JobNumber" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
           <Property Name="MobilePhone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
           <Property Name="MobileShort" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WeibaoLog">
+          <Key>
+            <PropertyRef Name="WbId" />
+          </Key>
+          <Property Name="WbId" Type="Guid" Nullable="false" />
+          <Property Name="AppId" Type="Guid" />
+          <Property Name="FixedSN" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="AssetSN" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ProductSN" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="BigClass" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="AppType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="OwerDepName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="WbContent" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="WbDate" Type="DateTime" Precision="3" />
+          <Property Name="WbJobNumber" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="WbRealName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Corporation">
+          <Key>
+            <PropertyRef Name="CorpId" />
+          </Key>
+          <Property Name="CorpId" Type="Guid" Nullable="false" />
+          <Property Name="CorpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderIndex" Type="Boolean" />
+          <Property Name="LinkmanName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="MobilePhone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="MobileShort" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Fault">
+          <Key>
+            <PropertyRef Name="FaultId" />
+          </Key>
+          <Property Name="FaultId" Type="Guid" Nullable="false" />
+          <Property Name="FaultText" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="BigClass" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -387,6 +485,7 @@
           <EntitySetMapping Name="BaoxiuBills">
             <EntityTypeMapping TypeName="JDDBModel.BaoxiuBill">
               <MappingFragment StoreEntitySet="BaoxiuBill">
+                <ScalarProperty Name="BillStatus" ColumnName="BillStatus" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="IsCanceled" ColumnName="IsCanceled" />
                 <ScalarProperty Name="UserMobileShort" ColumnName="UserMobileShort" />
@@ -410,6 +509,8 @@
           <EntitySetMapping Name="PaigongBills">
             <EntityTypeMapping TypeName="JDDBModel.PaigongBill">
               <MappingFragment StoreEntitySet="PaigongBill">
+                <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+                <ScalarProperty Name="IsAccept" ColumnName="IsAccept" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
                 <ScalarProperty Name="WxgMobileShort" ColumnName="WxgMobileShort" />
@@ -441,6 +542,52 @@
                 <ScalarProperty Name="JobNumber" ColumnName="JobNumber" />
                 <ScalarProperty Name="RealName" ColumnName="RealName" />
                 <ScalarProperty Name="WxgId" ColumnName="WxgId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeibaoLogs">
+            <EntityTypeMapping TypeName="JDDBModel.WeibaoLog">
+              <MappingFragment StoreEntitySet="WeibaoLog">
+                <ScalarProperty Name="WbRealName" ColumnName="WbRealName" />
+                <ScalarProperty Name="WbJobNumber" ColumnName="WbJobNumber" />
+                <ScalarProperty Name="WbDate" ColumnName="WbDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="WbContent" ColumnName="WbContent" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="OwerDepName" ColumnName="OwerDepName" />
+                <ScalarProperty Name="AppType" ColumnName="AppType" />
+                <ScalarProperty Name="BigClass" ColumnName="BigClass" />
+                <ScalarProperty Name="ProductSN" ColumnName="ProductSN" />
+                <ScalarProperty Name="AssetSN" ColumnName="AssetSN" />
+                <ScalarProperty Name="FixedSN" ColumnName="FixedSN" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="WbId" ColumnName="WbId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Corporations">
+            <EntityTypeMapping TypeName="JDDBModel.Corporation">
+              <MappingFragment StoreEntitySet="Corporation">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobileShort" ColumnName="MobileShort" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="LinkmanName" ColumnName="LinkmanName" />
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CorpName" ColumnName="CorpName" />
+                <ScalarProperty Name="CorpId" ColumnName="CorpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faults">
+            <EntityTypeMapping TypeName="JDDBModel.Fault">
+              <MappingFragment StoreEntitySet="Fault">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="BigClass" ColumnName="BigClass" />
+                <ScalarProperty Name="FaultText" ColumnName="FaultText" />
+                <ScalarProperty Name="FaultId" ColumnName="FaultId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

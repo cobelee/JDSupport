@@ -30,7 +30,16 @@
                 <label class="col-md-3 control-label" for="text-input">手机号码</label>
                 <div class="col-md-9">
                     <asp:TextBox ID="tbMobilePhone" runat="server" class="form-control" placeholder="手机号码" Text='<%# Eval("MobilePhone") %>'></asp:TextBox>
-                    <span class="help-block">用于接收短信信息。</span>
+                    <span class="help-block">用于接收报修进度状态短信。</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="text-input">炼化短号</label>
+                <div class="col-md-9">
+                    <asp:TextBox ID="tbMobileShort" runat="server" class="form-control" placeholder="炼化短号" Text='<%# Eval("MobileShort") %>'></asp:TextBox>
+                    <span class="help-block">用于语音联系。</span>
                 </div>
             </div>
         </div>
@@ -76,6 +85,15 @@
         </div>
         <div class="form-horizontal">
             <div class="form-group">
+                <label class="col-md-3 control-label" for="text-input">炼化短号</label>
+                <div class="col-md-9">
+                    <asp:TextBox ID="tbMobileShort" runat="server" class="form-control" placeholder="炼化短号" Text='<%# Eval("MobileShort") %>'></asp:TextBox>
+                    <span class="help-block">用于语音联系。</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-horizontal">
+            <div class="form-group">
                 <label class="col-md-3 control-label" for="text-input"></label>
                 <div class="col-md-9">
                     <asp:Button ID="InsertButton" runat="server" CausesValidation="True" CommandName="InsertRepairman"
@@ -110,6 +128,15 @@
                 <div class="col-md-9">
 
                     <p class="form-control-static"><%# Eval("MobilePhone") %></p>
+                </div>
+            </div>
+        </div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="text-input">炼化短号</label>
+                <div class="col-md-9">
+
+                    <p class="form-control-static"><%# Eval("MobileShort") %></p>
                 </div>
             </div>
         </div>

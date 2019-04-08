@@ -50,6 +50,7 @@ namespace Tiyi.JD.SQLServerDAL
 
             newWeibaoLog.WbId = Guid.NewGuid();
             newWeibaoLog.CreateDate = System.DateTime.Now;
+            newWeibaoLog.WbDate = DateTime.Now;
             dbContext.WeibaoLog.InsertOnSubmit(newWeibaoLog);
 
             dbContext.SubmitChanges();
@@ -81,8 +82,20 @@ namespace Tiyi.JD.SQLServerDAL
         {
             var query = from item in dbContext.WeibaoLog
                         where item.AppId == appId
+                        orderby item.CreateDate descending
                         select item;
             return query.AsQueryable<WeibaoLog>();
+        }
+
+        /// <summary>
+        /// 获取指定appId的最近一次维保记录
+        /// </summary>
+        /// <param name="appId">设备ID</param>
+        /// <returns></returns>
+        public WeibaoLog GetLastWeibaoLog(Guid appId)
+        {
+            var query = dbContext.WeibaoLog.OrderByDescending(u=>u.WbDate).FirstOrDefault(o => o.AppId == appId);
+            return query;
         }
 
 

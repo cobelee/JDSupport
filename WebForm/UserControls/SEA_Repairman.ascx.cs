@@ -98,6 +98,10 @@ public partial class UserControls_SEA_Repairman : System.Web.UI.UserControl
             TextBox tbMobilePhone = formView.FindControl("tbMobilePhone") as TextBox;
             record.MobilePhone = tbMobilePhone.Text;
 
+            // 炼化短号
+            TextBox tbMobileShort = formView.FindControl("tbMobileShort") as TextBox;
+            record.MobileShort = tbMobileShort.Text;
+
             bll_RepairmanManage.UpdateRepairman(record);
             if (Updated != null)
             {
@@ -121,6 +125,10 @@ public partial class UserControls_SEA_Repairman : System.Web.UI.UserControl
             // 手机号码
             TextBox tbMobilePhone = formView.FindControl("tbMobilePhone") as TextBox;
             record.MobilePhone = tbMobilePhone.Text;
+
+            // 炼化短号
+            TextBox tbMobileShort = formView.FindControl("tbMobileShort") as TextBox;
+            record.MobileShort = tbMobileShort.Text;
 
             Tiyi.JD.SQLServerDAL.Repairman user = bll_RepairmanManage.NewRepairman(record);
             if (RepairmanCreated != null)

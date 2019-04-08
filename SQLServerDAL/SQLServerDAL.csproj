@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FaultDA.cs" />
+    <Compile Include="CorporationDA.cs" />
     <Compile Include="JiadianDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

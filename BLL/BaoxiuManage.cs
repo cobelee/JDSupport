@@ -29,6 +29,18 @@ namespace Tiyi.JD.BLL
             da.SubmitChanges();
         }
 
+
+        /// <summary>
+        /// 获取指定状态的报修单数量
+        /// </summary>
+        /// <param name="isAccept">客服是否受理</param>
+        /// <param name="isCompleted">报修单是否处理完毕</param>
+        /// <returns></returns>
+        public int GetCount(bool isAccept, bool isCompleted)
+        {
+            return da.GetCount(isAccept, isCompleted);
+        }
+
         /// <summary>
         /// 创建新的报修单。
         /// </summary>
@@ -49,6 +61,15 @@ namespace Tiyi.JD.BLL
             da.CreateBaoxiuBillNotSubmit(newBaoxiuBill);
         }
 
+        /// <summary>
+        /// 获取指定设备的所有报修单。
+        /// </summary>
+        /// <param name = "appId" > 设备Id </ param >
+        /// < returns ></ returns >
+        public IQueryable<BaoxiuBill> GetBaoxiuBill_ForOneApp(Guid appId)
+        {
+            return da.GetBaoxiuBill_ForOneApp(appId);
+        }
 
         /// <summary>
         /// 获取所有未完成报修单列表。

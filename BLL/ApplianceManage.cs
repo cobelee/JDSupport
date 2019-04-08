@@ -28,6 +28,15 @@ namespace Tiyi.JD.BLL
         }
 
         /// <summary>
+        /// 获取设备总数
+        /// </summary>
+        /// <returns></returns>
+        public int GetCount_Appliance()
+        {
+            return appDA.GetCount_Appliance();
+        }
+
+        /// <summary>
         /// 创建新的设备。
         /// </summary>
         /// <param name="newBxBill">设备</param>
@@ -69,12 +78,31 @@ namespace Tiyi.JD.BLL
         }
 
         /// <summary>
+        /// 获取指定productSN的设备
+        /// </summary>
+        /// <param name="productSN">设备管理号</param>
+        /// <returns></returns>
+        public Appliance GetAppliance(string productSN)
+        {
+            return appDA.GetAppliance(productSN);
+        }
+
+        /// <summary>
         /// 获取所有的设备所属公司名称列表
         /// </summary>
         /// <returns></returns>
         public IQueryable<String> GetCorpNameList()
         {
             return appDA.GetCorpNameList();
+        }
+
+        /// <summary>
+        /// 获取指定产品大类的设备所属公司名称列表
+        /// </summary>
+        /// <returns></returns>
+        public IQueryable<String> GetCorpNameList(string bigClass)
+        {
+            return appDA.GetCorpNameList(bigClass);
         }
 
 
@@ -112,10 +140,20 @@ namespace Tiyi.JD.BLL
         /// <summary>
         /// 删除指定设备记录。
         /// </summary>
-        /// <param name="appId">设备编号 bxId .</param>
+        /// <param name="productSN">设备编号 bxId .</param>
         public void DeleteAppliance(string productSN)
         {
             appDA.DeleteAppliance(productSN);
+        }
+
+        /// <summary>
+        /// 删除指定设备记录。
+        /// By AppId.
+        /// </summary>
+        /// <param name="appId">设备系统Id.</param>
+        public void DeleteAppliance(Guid appId)
+        {
+            appDA.DeleteAppliance(appId);
         }
 
         /// <summary>

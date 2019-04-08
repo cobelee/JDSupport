@@ -84,7 +84,6 @@ D:\GithubRepoBank\JDSupport\WebUI\bin\zh-Hans\Microsoft.Owin.Security.Twitter.re
 D:\GithubRepoBank\JDSupport\WebUI\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 D:\GithubRepoBank\JDSupport\WebUI\obj\Debug\WebUI.dll
 D:\GithubRepoBank\JDSupport\WebUI\obj\Debug\WebUI.pdb
-D:\GithubRepoBank\JDSupport\WebUI\obj\Debug\WebUI.csprojResolveAssemblyReference.cache
 D:\GithubRepoBank\JDSupport\WebUI\bin\Senparc.Weixin.dll
 D:\GithubRepoBank\JDSupport\WebUI\bin\Senparc.Weixin.Work.dll
 D:\GithubRepoBank\JDSupport\WebUI\bin\Senparc.Weixin.pdb

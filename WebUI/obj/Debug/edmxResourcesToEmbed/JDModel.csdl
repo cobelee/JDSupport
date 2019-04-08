@@ -15,6 +15,9 @@
     </AssociationSet>
     <EntitySet Name="PaigongBills" EntityType="JDDBModel.PaigongBill" />
     <EntitySet Name="Repairmen" EntityType="JDDBModel.Repairman" />
+    <EntitySet Name="WeibaoLogs" EntityType="JDDBModel.WeibaoLog" />
+    <EntitySet Name="Corporations" EntityType="JDDBModel.Corporation" />
+    <EntitySet Name="Faults" EntityType="JDDBModel.Fault" />
   </EntityContainer>
   <EntityType Name="ProductSN">
     <Key>
@@ -93,6 +96,7 @@
     <Property Name="UserMobileShort" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
     <Property Name="IsCanceled" Type="Boolean" Nullable="false" />
     <Property Name="Remark" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="BillStatus" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_BaoxiuBill_Appliance">
     <End Type="JDDBModel.Appliance" Role="Appliance" Multiplicity="1" />
@@ -130,6 +134,8 @@
     <Property Name="WxgMobileShort" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
     <Property Name="IsClosed" Type="Boolean" Nullable="false" />
     <Property Name="Remark" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="IsAccept" Type="Boolean" Nullable="false" />
+    <Property Name="AcceptDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="Repairman">
     <Key>
@@ -140,5 +146,48 @@
     <Property Name="JobNumber" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
     <Property Name="MobilePhone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
     <Property Name="MobileShort" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="WeibaoLog">
+    <Key>
+      <PropertyRef Name="WbId" />
+    </Key>
+    <Property Name="WbId" Type="Guid" Nullable="false" />
+    <Property Name="AppId" Type="Guid" />
+    <Property Name="FixedSN" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="AssetSN" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSN" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="BigClass" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="AppType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="OwerDepName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="WbContent" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="WbDate" Type="DateTime" Precision="3" />
+    <Property Name="WbJobNumber" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="WbRealName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Corporation">
+    <Key>
+      <PropertyRef Name="CorpId" />
+    </Key>
+    <Property Name="CorpId" Type="Guid" Nullable="false" />
+    <Property Name="CorpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OrderIndex" Type="Boolean" />
+    <Property Name="LinkmanName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="MobilePhone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="MobileShort" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Fault">
+    <Key>
+      <PropertyRef Name="FaultId" />
+    </Key>
+    <Property Name="FaultId" Type="Guid" Nullable="false" />
+    <Property Name="FaultText" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="BigClass" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
   </EntityType>
 </Schema>

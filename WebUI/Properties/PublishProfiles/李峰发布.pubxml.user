@@ -13,10 +13,10 @@
       <publishTime>02/22/2013 08:43:40</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>02/08/2018 16:06:04</publishTime>
+      <publishTime>08/21/2018 11:39:39</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>02/08/2018 16:06:04</publishTime>
+      <publishTime>08/21/2018 11:39:39</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -67,7 +67,7 @@
       <publishTime>04/23/2012 15:23:58</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>08/03/2014 20:33:56</publishTime>
+      <publishTime>04/15/2018 13:58:56</publishTime>
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>11/27/2012 13:00:52</publishTime>
@@ -108,6 +108,12 @@
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
       <publishTime>06/18/2015 20:19:46</publishTime>
     </File>
+    <File Include="bin/Senparc.Weixin.dll">
+      <publishTime>04/15/2018 13:58:56</publishTime>
+    </File>
+    <File Include="bin/Senparc.Weixin.Work.dll">
+      <publishTime>04/15/2018 13:58:56</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>01/28/2015 04:04:30</publishTime>
     </File>
@@ -133,7 +139,10 @@
       <publishTime>09/10/2013 17:28:38</publishTime>
     </File>
     <File Include="bin/WebUI.dll">
-      <publishTime>02/08/2018 15:18:21</publishTime>
+      <publishTime>08/21/2018 11:39:24</publishTime>
+    </File>
+    <File Include="bin/WebUI.XmlSerializers.dll">
+      <publishTime>08/21/2018 11:39:26</publishTime>
     </File>
     <File Include="bin/zh-Hans/EntityFramework.resources.dll">
       <publishTime>03/02/2015 09:32:38</publishTime>
@@ -214,7 +223,10 @@
       <publishTime>11/08/2017 11:50:00</publishTime>
     </File>
     <File Include="Controllers/AppliancesController.cs">
-      <publishTime>11/29/2017 10:44:09</publishTime>
+      <publishTime>02/07/2018 15:25:29</publishTime>
+    </File>
+    <File Include="Controllers/BaoxiuBillsController.cs">
+      <publishTime>03/27/2018 09:21:50</publishTime>
     </File>
     <File Include="Controllers/HomeController.cs">
       <publishTime>11/08/2017 11:49:46</publishTime>
@@ -224,6 +236,12 @@
     </File>
     <File Include="Controllers/ProductSNsController.cs">
       <publishTime>11/08/2017 21:00:05</publishTime>
+    </File>
+    <File Include="Controllers/TestController.cs">
+      <publishTime>04/15/2018 15:00:31</publishTime>
+    </File>
+    <File Include="Controllers/UploadDataController.cs">
+      <publishTime>01/07/2018 17:58:44</publishTime>
     </File>
     <File Include="favicon.ico">
       <publishTime>11/08/2017 11:49:46</publishTime>
@@ -243,14 +261,23 @@
     <File Include="Global.asax">
       <publishTime>11/08/2017 11:49:46</publishTime>
     </File>
+    <File Include="ImportDLL/Newtonsoft.Json.dll">
+      <publishTime>04/15/2018 13:58:56</publishTime>
+    </File>
+    <File Include="ImportDLL/Senparc.Weixin.dll">
+      <publishTime>04/15/2018 13:58:56</publishTime>
+    </File>
+    <File Include="ImportDLL/Senparc.Weixin.Work.dll">
+      <publishTime>04/15/2018 13:58:56</publishTime>
+    </File>
     <File Include="JDModel.edmx.diagram">
-      <publishTime>02/07/2018 08:12:17</publishTime>
+      <publishTime>05/20/2018 20:06:34</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>11/08/2017 11:50:09</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>02/08/2018 16:05:56</publishTime>
+      <publishTime>08/21/2018 11:39:28</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>11/08/2017 11:49:48</publishTime>
@@ -307,7 +334,7 @@
       <publishTime>11/08/2017 11:50:00</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>11/08/2017 11:50:00</publishTime>
+      <publishTime>02/08/2018 20:52:52</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>11/08/2017 11:50:00</publishTime>
@@ -331,10 +358,10 @@
       <publishTime>11/29/2017 09:36:50</publishTime>
     </File>
     <File Include="Views/Appliances/Cx.cshtml">
-      <publishTime>02/08/2018 15:17:23</publishTime>
+      <publishTime>04/18/2018 16:32:43</publishTime>
     </File>
     <File Include="Views/Appliances/Delete.cshtml">
-      <publishTime>11/29/2017 09:36:51</publishTime>
+      <publishTime>03/27/2018 10:12:37</publishTime>
     </File>
     <File Include="Views/Appliances/Details.cshtml">
       <publishTime>11/29/2017 10:05:33</publishTime>
@@ -349,10 +376,10 @@
       <publishTime>02/07/2018 14:24:28</publishTime>
     </File>
     <File Include="Views/BaoxiuBills/BillList.cshtml">
-      <publishTime>02/08/2018 16:04:37</publishTime>
+      <publishTime>08/20/2018 10:20:07</publishTime>
     </File>
     <File Include="Views/BaoxiuBills/Create.cshtml">
-      <publishTime>02/07/2018 15:15:25</publishTime>
+      <publishTime>04/18/2018 15:26:59</publishTime>
     </File>
     <File Include="Views/BaoxiuBills/CreateSuccess.cshtml">
       <publishTime>02/07/2018 16:40:23</publishTime>
@@ -364,7 +391,7 @@
       <publishTime>02/06/2018 13:11:23</publishTime>
     </File>
     <File Include="Views/BaoxiuBills/Edit.cshtml">
-      <publishTime>02/08/2018 14:19:53</publishTime>
+      <publishTime>04/26/2018 11:51:18</publishTime>
     </File>
     <File Include="Views/BaoxiuBills/Index.cshtml">
       <publishTime>02/07/2018 09:14:20</publishTime>
@@ -411,6 +438,9 @@
     <File Include="Views/ProductSNs/Index.cshtml">
       <publishTime>11/29/2017 09:27:37</publishTime>
     </File>
+    <File Include="Views/Sh/cx.cshtml">
+      <publishTime>08/21/2018 08:08:29</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/08/2017 11:50:00</publishTime>
     </File>
@@ -426,6 +456,9 @@
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>11/08/2017 11:50:00</publishTime>
     </File>
+    <File Include="Views/Test/GetWorkId.cshtml">
+      <publishTime>04/15/2018 14:58:23</publishTime>
+    </File>
     <File Include="Views/UploadData/Index.cshtml">
       <publishTime>01/07/2018 18:07:39</publishTime>
     </File>
@@ -435,11 +468,20 @@
     <File Include="Views/Web.config">
       <publishTime>11/08/2017 11:49:46</publishTime>
     </File>
+    <File Include="Views/WeibaoLog/Create.cshtml">
+      <publishTime>04/16/2018 11:20:19</publishTime>
+    </File>
+    <File Include="Views/WeibaoLog/WbLogList.cshtml">
+      <publishTime>08/21/2018 11:18:12</publishTime>
+    </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>11/29/2017 09:26:07</publishTime>
     </File>
+    <File Include="Web References/Tiyi.Weixin.Work/Reference.map">
+      <publishTime>03/21/2018 21:19:11</publishTime>
+    </File>
     <File Include="Web.config">
-      <publishTime>02/08/2018 15:18:22</publishTime>
+      <publishTime>08/21/2018 11:39:27</publishTime>
     </File>
   </ItemGroup>
 </Project>

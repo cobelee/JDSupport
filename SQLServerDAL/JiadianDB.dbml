@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="JiadianDB" EntityNamespace="Tiyi.JD.SQLServerDAL" ContextNamespace="Tiyi.JD.SQLServerDAL" Class="JiadianDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.__MigrationHistory" Member="__MigrationHistory">
+    <Type Name="__MigrationHistory">
+      <Column Name="MigrationId" Type="System.String" DbType="NVarChar(150) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ContextKey" Type="System.String" DbType="NVarChar(300) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Model" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ProductVersion" Type="System.String" DbType="NVarChar(32) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
   <Table Name="dbo.Appliance" Member="Appliance">
     <Type Name="Appliance">
       <Column Name="AppId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -34,6 +42,57 @@
       <Association Name="FK_AppUser_User" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.AspNetRoles" Member="AspNetRoles">
+    <Type Name="AspNetRoles">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId" Member="AspNetUserRoles" ThisKey="Id" OtherKey="RoleId" Type="AspNetUserRoles" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserClaims" Member="AspNetUserClaims">
+    <Type Name="AspNetUserClaims">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="ClaimType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ClaimValue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId" Member="AspNetUsers" ThisKey="UserId" OtherKey="Id" Type="AspNetUsers" IsForeignKey="true" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserLogins" Member="AspNetUserLogins">
+    <Type Name="AspNetUserLogins">
+      <Column Name="LoginProvider" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProviderKey" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId" Member="AspNetUsers" ThisKey="UserId" OtherKey="Id" Type="AspNetUsers" IsForeignKey="true" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUserRoles" Member="AspNetUserRoles">
+    <Type Name="AspNetUserRoles">
+      <Column Name="UserId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId" Member="AspNetRoles" ThisKey="RoleId" OtherKey="Id" Type="AspNetRoles" IsForeignKey="true" DeleteOnNull="true" />
+      <Association Name="FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId" Member="AspNetUsers" ThisKey="UserId" OtherKey="Id" Type="AspNetUsers" IsForeignKey="true" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AspNetUsers" Member="AspNetUsers">
+    <Type Name="AspNetUsers">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="EmailConfirmed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordHash" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SecurityStamp" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PhoneNumberConfirmed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TwoFactorEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LockoutEndDateUtc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LockoutEnabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AccessFailedCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId" Member="AspNetUserClaims" ThisKey="Id" OtherKey="UserId" Type="AspNetUserClaims" DeleteRule="CASCADE" />
+      <Association Name="FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId" Member="AspNetUserLogins" ThisKey="Id" OtherKey="UserId" Type="AspNetUserLogins" DeleteRule="CASCADE" />
+      <Association Name="FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId" Member="AspNetUserRoles" ThisKey="Id" OtherKey="UserId" Type="AspNetUserRoles" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
   <Table Name="dbo.BaoxiuBill" Member="BaoxiuBill">
     <Type Name="BaoxiuBill">
       <Column Name="BxId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -48,12 +107,34 @@
       <Column Name="UserMobileShort" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="FaultPhenomenon" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="BillStatus" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
       <Column Name="HandleResult" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
       <Column Name="IsAccept" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsCanceled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="IsCompleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Remark" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
       <Association Name="FK_BaoxiuBill_Appliance" Member="Appliance" ThisKey="AppId" OtherKey="AppId" Type="Appliance" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Corporation" Member="Corporation">
+    <Type Name="Corporation">
+      <Column Name="CorpId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CorpName" Type="System.String" DbType="NVarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OrderIndex" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LinkmanName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="Telephone" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="MobilePhone" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="MobileShort" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Fault" Member="Fault">
+    <Type Name="Fault">
+      <Column Name="FaultId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FaultText" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
+      <Column Name="BigClass" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.PaigongBill" Member="PaigongBill">
@@ -71,6 +152,8 @@
       <Column Name="UserMobileShort" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
       <Column Name="FaultPhenomenon" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
       <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsAccept" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AcceptDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="HandleResult" Type="System.String" DbType="NVarChar(1024)" CanBeNull="true" />
       <Column Name="WxgId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="WxgRealName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
@@ -109,8 +192,8 @@
   </Table>
   <Table Name="dbo.WeibaoLog" Member="WeibaoLog">
     <Type Name="WeibaoLog">
-      <Column Name="WbId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="AppId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="WbId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AppId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="FixedSN" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="AssetSN" Type="System.String" DbType="NVarChar(64)" CanBeNull="true" />
       <Column Name="ProductSN" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
@@ -118,7 +201,7 @@
       <Column Name="AppType" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="OwerDepName" Type="System.String" DbType="NVarChar(32)" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
-      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="WbContent" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
       <Column Name="Remark" Type="System.String" DbType="NVarChar(512)" CanBeNull="true" />
       <Column Name="WbDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />

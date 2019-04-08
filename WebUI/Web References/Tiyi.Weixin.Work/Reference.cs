@@ -35,6 +35,8 @@ namespace WebUI.Tiyi.Weixin.Work {
         
         private System.Threading.SendOrPostCallback SendArticleToUserOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SendArticleToTagsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ConvertArticleToJsonOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -83,6 +85,9 @@ namespace WebUI.Tiyi.Weixin.Work {
         
         /// <remarks/>
         public event SendArticleToUserCompletedEventHandler SendArticleToUserCompleted;
+        
+        /// <remarks/>
+        public event SendArticleToTagsCompletedEventHandler SendArticleToTagsCompleted;
         
         /// <remarks/>
         public event ConvertArticleToJsonCompletedEventHandler ConvertArticleToJsonCompleted;
@@ -183,6 +188,39 @@ namespace WebUI.Tiyi.Weixin.Work {
             if ((this.SendArticleToUserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SendArticleToUserCompleted(this, new SendArticleToUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.zpitc.cn/SendArticleToTags", RequestNamespace="http://www.zpitc.cn/", ResponseNamespace="http://www.zpitc.cn/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string SendArticleToTags(string toTags, string articleJson, string agentId) {
+            object[] results = this.Invoke("SendArticleToTags", new object[] {
+                        toTags,
+                        articleJson,
+                        agentId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SendArticleToTagsAsync(string toTags, string articleJson, string agentId) {
+            this.SendArticleToTagsAsync(toTags, articleJson, agentId, null);
+        }
+        
+        /// <remarks/>
+        public void SendArticleToTagsAsync(string toTags, string articleJson, string agentId, object userState) {
+            if ((this.SendArticleToTagsOperationCompleted == null)) {
+                this.SendArticleToTagsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSendArticleToTagsOperationCompleted);
+            }
+            this.InvokeAsync("SendArticleToTags", new object[] {
+                        toTags,
+                        articleJson,
+                        agentId}, this.SendArticleToTagsOperationCompleted, userState);
+        }
+        
+        private void OnSendArticleToTagsOperationCompleted(object arg) {
+            if ((this.SendArticleToTagsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SendArticleToTagsCompleted(this, new SendArticleToTagsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -356,6 +394,32 @@ namespace WebUI.Tiyi.Weixin.Work {
         private object[] results;
         
         internal SendArticleToUserCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2053.0")]
+    public delegate void SendArticleToTagsCompletedEventHandler(object sender, SendArticleToTagsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2053.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SendArticleToTagsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SendArticleToTagsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

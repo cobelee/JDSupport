@@ -8,11 +8,13 @@
 <ul class="nav nav-tabs">
     <li> @Html.ActionLink("设备详情", "cx", "sh", new { id = @ViewBag.ProductSN }, new { @class = "" })</li>
     <li class="active"><a href="#">报修记录</a></li>
-    <li><a href="#">维保记录</a></li>
+    <li>@Html.ActionLink("维保记录", "WbLogList", "WeibaoLog", new { id = @ViewBag.ProductSN }, new { @class = "" })</li>
 </ul>
 <h2>报修记录</h2>
 <div class="panel-group" id="accordion">
-    @{ int index = 0;
+    @{
+        
+        int index = 0;
         foreach (WebUI.BaoxiuBill bill in Model)
         {
             index++;
@@ -24,9 +26,9 @@
                             报障日期：@bill.CreateDate &nbsp;&nbsp;(正在处理)
                         </a>
                     </div>
-                    <div id="@bill.BxId" class="panel-collapse collapse @if (index == 1){ @Html.Raw("in") } ">
+                    <div id="@bill.BxId" class="panel-collapse collapse @if (index == 1)
+                    { @Html.Raw("in") } ">
                         <div class="panel-body">
-                            <span style="color:slategray;">@bill.FaultPhenomenon</span>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -37,7 +39,7 @@
                                 <tbody>
                                     <tr>
                                         <td>@Html.DisplayName("设备安装地址")</td>
-                                        <td>@bill.Address</td>
+                                        <td>@bill.DepName @bill.Address</td>
                                     </tr>
                                     <tr>
                                         <td>@Html.DisplayName("联系人姓名")</td>
@@ -48,68 +50,82 @@
                                         <td>@bill.UserMobilePhone</td>
                                     </tr>
                                     <tr>
+                                        <td>@Html.DisplayName("炼化短号")</td>
+                                        <td>@bill.UserMobileShort</td>
+                                    </tr>
+                                    <tr>
                                         <td>@Html.DisplayName("故障现象")</td>
                                         <td>@bill.FaultPhenomenon</td>
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayName("受理状态")</td>
-                                        <td>@bill.IsAccept</td>
+                                        <td>@Html.DisplayName("报修单状态")</td>
+                                        <td><b>@bill.BillStatus</b></td>
                                     </tr>
                                     <tr>
-                                        <td>@Html.DisplayName("处理结果")</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">@bill.HandleResult</td>
-                                    </tr>
+                                        <td>@Html.DisplayName("维修工")</td>
+                                        <td>
+                                            @*@{
+                                            Guid bxId = bill.BxId;
+                                            var pgBill = 
+                                        }*@
+                                            待开发
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayName("处理结果")</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">@bill.HandleResult</td>
+                                </tr>
 
-                                </tbody>
-                            </table>
-                            <div class="text-center">
-                                @Html.ActionLink("修改报修单信息", "Edit", new { id = bill.BxId }, new { @class = "btn btn-sm btn-primary" })&nbsp;&nbsp;
-                                @Html.ActionLink("删除此报修记录", "Delete", new { id = bill.BxId }, new { @class = "btn btn-sm btn-danger" })
-                            </div>
+                            </tbody>
+                        </table>
+                        <div class="text-center">
+                            @Html.ActionLink("修改报修单信息", "Edit", new { id = bill.BxId }, new { @class = "btn btn-sm btn-primary" })&nbsp;&nbsp;
+                            @Html.ActionLink("删除此报修记录", "Delete", new { id = bill.BxId }, new { @class = "btn btn-sm btn-danger" })
                         </div>
                     </div>
-                }
-                else
-                {
-                    <div class="panel-heading">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#@bill.BxId">
-                            报障日期：@bill.CreateDate &nbsp;&nbsp;(处理完成)
-                        </a>
-                    </div>
-                    <div id="@bill.BxId" class="panel-collapse collapse @if (index == 1){ @Html.Raw("in") } ">
-                        <div class="panel-body">
-                            <span style="color:slategray;">@bill.FaultPhenomenon</span>
-                            <dl class="dl-horizontal">
-                                <dt>
-                                    @Html.DisplayName("联系人姓名：")
-                                </dt>
+                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="panel-heading">
+                                                    <a data-toggle="collapse" data-parent="#accordion" href="#@bill.BxId">
+                                                        报障日期：@bill.CreateDate &nbsp;&nbsp;(处理完成)
+                                                    </a>
+                                                </div>
+                                                <div id="@bill.BxId" class="panel-collapse collapse @if (index == 1){ @Html.Raw("in") } ">
+                                                    <div class="panel-body">
+                                                        <span style="color:slategray;">@bill.FaultPhenomenon</span>
+                                                        <dl class="dl-horizontal">
+                                                            <dt>
+                                                                @Html.DisplayName("联系人姓名：")
+                                                            </dt>
 
-                                <dd>
-                                    @bill.UserName
-                                </dd>
-                                <dt>
-                                    @Html.DisplayName("故障现象：")
-                                </dt>
-                                <dd>@bill.FaultPhenomenon</dd>
-                                <dt>
-                                    @Html.DisplayName("处理结果：")
-                                </dt>
+                                                            <dd>
+                                                                @bill.UserName
+                                                            </dd>
+                                                            <dt>
+                                                                @Html.DisplayName("故障现象：")
+                                                            </dt>
+                                                            <dd>@bill.FaultPhenomenon</dd>
+                                                            <dt>
+                                                                @Html.DisplayName("处理结果：")
+                                                            </dt>
 
-                                <dd>
-                                    @bill.HandleResult
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                }
+                                                            <dd>
+                                                                @bill.HandleResult
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            }
 
 
             </div>
 
-        }
+                                            }
     }
 
 </div>

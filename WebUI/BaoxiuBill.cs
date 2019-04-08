@@ -31,6 +31,7 @@ namespace WebUI
         public string UserMobileShort { get; set; }
         public bool IsCanceled { get; set; }
         public string Remark { get; set; }
+        public string BillStatus { get; set; }
     
         public virtual Appliance Appliance { get; set; }
     }

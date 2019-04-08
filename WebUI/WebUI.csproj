@@ -189,8 +189,16 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductSNsController.cs" />
+    <Compile Include="Controllers\ShController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UploadDataController.cs" />
+    <Compile Include="Controllers\WeibaoLogController.cs" />
+    <Compile Include="Corporation.cs">
+      <DependentUpon>JDModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fault.cs">
+      <DependentUpon>JDModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +244,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WeibaoLog.cs">
+      <DependentUpon>JDModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -290,11 +301,14 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web References\Tiyi.Weixin.Work\Reference.map">
+    <Content Include="Views\WeibaoLog\WbLogList.cshtml" />
+    <Content Include="Views\Sh\cx.cshtml" />
+    <None Include="Web References\Tiyi.Weixin.Work\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Views\Test\GetWorkId.cshtml" />
+    <Content Include="Views\WeibaoLog\Create.cshtml" />
     <None Include="Web References\Tiyi.Weixin.Work\SendMsgService.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -343,7 +357,6 @@
     <Content Include="Views\Appliances\Details.cshtml" />
     <Content Include="Views\Appliances\Edit.cshtml" />
     <Content Include="Views\Appliances\Index.cshtml" />
-    <Content Include="Views\Appliances\Cx.cshtml" />
     <Content Include="Views\UploadData\Index.cshtml" />
     <Content Include="Views\UploadData\Update.cshtml" />
     <Content Include="Views\BaoxiuBills\Create.cshtml" />
